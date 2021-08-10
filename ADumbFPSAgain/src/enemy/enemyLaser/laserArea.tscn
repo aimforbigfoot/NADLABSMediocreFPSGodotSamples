@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Material.material" type="Material" id=1]
+[ext_resource path="res://src/enemy/enemyLaser/laserArea.gd" type="Script" id=2]
+[ext_resource path="res://assets/colormaterials/green.tres" type="Material" id=3]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 11.1861
+height = 2004.0
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 600, 1 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+scale_curve = SubResource( 3 )
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="CylinderMesh" id=6]
+top_radius = 10.0
+bottom_radius = 10.0
+height = 2000.0
+radial_segments = 9
+rings = 1
+
+[node name="laserArea" type="Area"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Particles" type="Particles" parent="."]
+material_override = ExtResource( 1 )
+amount = 64
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = ExtResource( 3 )
+mesh = SubResource( 6 )
+material/0 = ExtResource( 1 )

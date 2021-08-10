@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/britiaJugBeforeCrash.wav-fe415ac2b9cf8f3c6cf82019f20d9046.sample"
+
+[deps]
+
+source_file="res://assets/jfxr/britiaJugBeforeCrash.wav"
+dest_files=[ "res://.import/britiaJugBeforeCrash.wav-fe415ac2b9cf8f3c6cf82019f20d9046.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

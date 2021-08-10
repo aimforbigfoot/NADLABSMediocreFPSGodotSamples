@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/homeScreens/Base2DScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/texts/42size.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/homeScreens/aboutScreen/AboutScene.gd" type="Script" id=3]
+
+[node name="AboutScene" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Label" parent="ScrollContainer/VBoxContainer" index="0"]
+margin_left = 416.0
+margin_top = 57.0
+margin_right = 864.0
+margin_bottom = 137.0
+text = "About Screen"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" index="1"]
+margin_top = 141.0
+margin_right = 1280.0
+margin_bottom = 586.0
+custom_fonts/font = ExtResource( 2 )
+text = "I made a game,
+I hope you like it,
+
+please buy it if you 
+got it for free please
+or
+maybe a sub on youtube? please?
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" parent="ScrollContainer/VBoxContainer" index="2"]
+margin_left = 578.0
+margin_top = 590.0
+margin_right = 702.0
+margin_bottom = 663.0
+text = "Back"

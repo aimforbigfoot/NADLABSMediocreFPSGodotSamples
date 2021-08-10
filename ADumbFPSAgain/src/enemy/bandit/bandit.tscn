@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/bandit/bandit.gd" type="Script" id=2]
+[ext_resource path="res://assets/colormaterials/green.tres" type="Material" id=3]
+[ext_resource path="res://assets/enemyObjs/testingMonster/spinningMonster.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/jfxr/Explosion 17.wav" type="AudioStream" id=5]
+[ext_resource path="res://src/enemy/enemyLaser/laserArea.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 24.0
+height = 26.0
+
+[node name="bandit" groups=[
+"ground",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="laserArea" parent="." index="0" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 1043.45, -1.62585e-11 )
+
+[node name="MeshInstance" parent="." index="1"]
+transform = Transform( 5, 0, 0, 0, 5, 5.32907e-14, 0, -5.32907e-14, 5, 0, 9, 0 )
+material_override = ExtResource( 3 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 31, 0 )
+shape = SubResource( 1 )
+
+[node name="noisePlayer" parent="noises" index="0"]
+stream = ExtResource( 5 )
+
+[node name="shootPlayer" parent="noises" index="2"]
+stream = ExtResource( 5 )
+
+[node name="RayCast" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.4145, 0 )
+
+[node name="crosshair" parent="." index="8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 75, -2 )
+
+[node name="about3secTimer" type="Timer" parent="." index="9"]
+wait_time = 3.0
+autostart = true

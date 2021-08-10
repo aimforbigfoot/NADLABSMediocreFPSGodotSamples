@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/loopOfNoise.mp3-5d777302cdbd02efd0c289dbdab40f13.mp3str"
+
+[deps]
+
+source_file="res://assets/jfxr/loopOfNoise.mp3"
+dest_files=[ "res://.import/loopOfNoise.mp3-5d777302cdbd02efd0c289dbdab40f13.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

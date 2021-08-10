@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Explosion 20.wav-cfcc5e7f031274c8957e9bb6deb47c07.sample"
+
+[deps]
+
+source_file="res://assets/jfxr/Explosion 20.wav"
+dest_files=[ "res://.import/Explosion 20.wav-cfcc5e7f031274c8957e9bb6deb47c07.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,153 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/player/playerSmooth.gd" type="Script" id=1]
+[ext_resource path="res://src/player/badHand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/shootSounds/BROWNNOISE.wav" type="AudioStream" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/shootSounds/Laser_shoot 40 (1).wav" type="AudioStream" id=5]
+[ext_resource path="res://src/player/playerCols/playerRegularCol.tres" type="Shape" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("badHand:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 0.420448, 1.86607 ),
+"update": 0,
+"values": [ Vector3( 0, -0.557, -0.421102 ), Vector3( 0, -0.529, -0.416 ), Vector3( 0, -0.542, -0.378 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "shoot"
+length = 0.03
+loop = true
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("badHand:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.008 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -0.557, -0.421102 ), Vector3( 0, -0.557, -0.581159 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.004, 0.016, 0.023 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0.232, -5.122, 0.398 ), Vector3( -0.349, 0, 0 ), Vector3( -0.174, 4.24, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "shootLaser"
+length = 0.05
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.05 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+flags_no_depth_test = true
+flags_use_point_size = true
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="CubeMesh" id=6]
+
+[node name="playerSmooth" type="KinematicBody" groups=[
+"player",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = ExtResource( 6 )
+
+[node name="head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.63813, 0 )
+
+[node name="Camera" type="Camera" parent="head"]
+current = true
+far = 8192.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera"]
+anims/idle = SubResource( 1 )
+anims/shoot = SubResource( 2 )
+anims/shootLaser = SubResource( 3 )
+
+[node name="badHand" parent="head/Camera" instance=ExtResource( 2 )]
+transform = Transform( -2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0, -0.557, -0.421102 )
+
+[node name="Position3D" type="Position3D" parent="head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+visible = false
+
+[node name="bulletSpawnPt" type="Position3D" parent="head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.09265, -13.2283 )
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44 )
+material_override = SubResource( 4 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="head/Camera"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sniperRay" type="RayCast" parent="head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -3000 )
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="MeshInstance" type="MeshInstance" parent="head/Camera"]
+transform = Transform( 2.873, 0, 0, 0, 1, 0, 0, 0, 2500, -0.427099, -12.8948, -2455.3 )
+material_override = SubResource( 5 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.41279, 0 )
+omni_range = 1226.0
+
+[node name="shotTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="shootPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 50.0
+
+[node name="goodJobPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = -12.701

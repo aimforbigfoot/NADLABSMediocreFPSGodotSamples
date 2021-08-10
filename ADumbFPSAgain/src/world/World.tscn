@@ -1,0 +1,210 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/player/playerSmooth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/world/blocks/glowingWhiteBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/world/blocks/TheDestroyer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/world/World.gd" type="Script" id=6]
+[ext_resource path="res://src/world/blocks/largeWall.tscn" type="PackedScene" id=8]
+
+[node name="World" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="playerSmooth" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31.7276, 0 )
+
+[node name="enemyFolder" type="Spatial" parent="."]
+
+[node name="worldItems" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="largeWall" parent="worldItems" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -957, 955, 0 )
+
+[node name="largeWall2" parent="worldItems" instance=ExtResource( 8 )]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 987, 955, 0 )
+
+[node name="largeWall3" parent="worldItems" instance=ExtResource( 8 )]
+transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 2, 955, -989 )
+
+[node name="largeWall4" parent="worldItems" instance=ExtResource( 8 )]
+transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 2, 955, 930 )
+
+[node name="largeWall6" parent="worldItems" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1327.9, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="worldItems"]
+transform = Transform( 1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 241, 0 )
+light_energy = 0.13
+shadow_enabled = true
+
+[node name="floorPoints" type="Spatial" parent="worldItems"]
+
+[node name="Position3D" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45367, 0, 158.295 )
+
+[node name="Position3D2" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -402.107, 0, 85.7048 )
+
+[node name="Position3D3" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -613.53, 6.10352e-05, -472.906 )
+
+[node name="Position3D4" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -241.988, 6.10352e-05, -685.807 )
+
+[node name="Position3D5" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 119.49, 6.10352e-05, -736.415 )
+
+[node name="Position3D6" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 763.49, 6.10352e-05, -736.415 )
+
+[node name="Position3D7" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 763.49, 6.10352e-05, -427.415 )
+
+[node name="Position3D8" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 763.49, 6.10352e-05, -91.4153 )
+
+[node name="Position3D9" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 763.49, 6.10352e-05, 183.585 )
+
+[node name="Position3D10" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 763.49, 6.10352e-05, 574.585 )
+
+[node name="Position3D11" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 763.49, 6.10352e-05, 368.585 )
+
+[node name="Position3D12" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 328.49, 6.10352e-05, 729.585 )
+
+[node name="Position3D13" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 152.49, 6.10352e-05, 729.585 )
+
+[node name="Position3D14" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.5098, 6.10352e-05, 729.585 )
+
+[node name="Position3D15" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -334.51, 6.10352e-05, 729.585 )
+
+[node name="Position3D16" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -570.51, 6.10352e-05, 729.585 )
+
+[node name="Position3D17" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -793.51, 6.10352e-05, 729.585 )
+
+[node name="Position3D18" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -793.51, 6.10352e-05, 475.585 )
+
+[node name="Position3D19" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -793.51, 6.10352e-05, 105.585 )
+
+[node name="Position3D20" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -793.51, 6.10352e-05, -284.415 )
+
+[node name="Position3D21" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -793.51, 6.10352e-05, -525.415 )
+
+[node name="Position3D22" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -793.51, 6.10352e-05, -754.415 )
+
+[node name="Position3D23" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -449.51, 6.10352e-05, -341.415 )
+
+[node name="Position3D24" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -162.844, 6.10352e-05, -400.849 )
+
+[node name="Position3D25" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 237.156, 6.10352e-05, -457.849 )
+
+[node name="Position3D26" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 357.156, 6.10352e-05, -245.849 )
+
+[node name="Position3D27" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 404.156, 6.10352e-05, 130.151 )
+
+[node name="Position3D28" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 491.156, 6.10352e-05, 341.151 )
+
+[node name="Position3D29" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 240.156, 6.10352e-05, 411.151 )
+
+[node name="Position3D30" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -115.844, 6.10352e-05, 369.151 )
+
+[node name="Position3D31" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -250.844, 6.10352e-05, 235.151 )
+
+[node name="Position3D32" type="Position3D" parent="worldItems/floorPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 377.156, 6.10352e-05, 604.151 )
+
+[node name="glowingWhiteBar" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -960 )
+
+[node name="glowingWhiteBar2" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -933, 0, 3 )
+
+[node name="glowingWhiteBar5" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -928, 880, -964 )
+
+[node name="glowingWhiteBar7" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 960, 880, -964 )
+
+[node name="glowingWhiteBar12" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, 955, 880, 900 )
+
+[node name="glowingWhiteBar10" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -928, 880, 894 )
+
+[node name="glowingWhiteBar3" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 904 )
+
+[node name="glowingWhiteBar4" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 963, 0, 1 )
+
+[node name="glowingWhiteBar13" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1299.1, -960 )
+
+[node name="glowingWhiteBar14" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -933, 1299.1, 3 )
+
+[node name="glowingWhiteBar15" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1299.1, 904 )
+
+[node name="glowingWhiteBar16" parent="worldItems" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 963, 1299.1, 1 )
+
+[node name="TheDestroyer" parent="worldItems" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 698, 1090 )
+
+[node name="TheDestroyer2" parent="worldItems" instance=ExtResource( 4 )]
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 1094, 698, -96 )
+
+[node name="TheDestroyer5" parent="worldItems" instance=ExtResource( 4 )]
+transform = Transform( 0, -1, 1.49012e-08, 0, 2.98023e-08, 1, -1, 0, 0, -65, -281, -96 )
+
+[node name="TheDestroyer6" parent="worldItems" instance=ExtResource( 4 )]
+transform = Transform( 0, -1, 1.49012e-08, 0, 2.98023e-08, 1, -1, 0, 0, -65, 1564, -96 )
+
+[node name="TheDestroyer3" parent="worldItems" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -36.0001, 698, -1181 )
+
+[node name="TheDestroyer4" parent="worldItems" instance=ExtResource( 4 )]
+transform = Transform( 8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, -1165, 698, 5 )
+
+[node name="wallPointsx" type="Spatial" parent="worldItems"]
+
+[node name="Position3D" type="Position3D" parent="worldItems/wallPointsx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 966.962, 474.998, 0 )
+
+[node name="Position3D2" type="Position3D" parent="worldItems/wallPointsx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 966.962, 731.132, 403.713 )
+
+[node name="Position3D3" type="Position3D" parent="worldItems/wallPointsx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 966.962, 839.132, -546.287 )
+
+[node name="Position3D4" type="Position3D" parent="worldItems/wallPointsx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 966.962, 323.132, -522.287 )
+
+[node name="Position3D5" type="Position3D" parent="worldItems/wallPointsx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 966.962, 279.132, 526.713 )

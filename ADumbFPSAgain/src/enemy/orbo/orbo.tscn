@@ -1,0 +1,134 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/orbo/orbo.gd" type="Script" id=3]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 80.0
+height = 160.0
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode blend_add,depth_draw_never,cull_disabled,diffuse_burley,specular_schlick_ggx,unshaded;
+
+
+uniform float health: hint_range(0.0, 1.0);
+uniform float shield_level: hint_range(0.0, 1.0);
+
+uniform vec4 primary_color : hint_color;
+uniform vec4 damage_color: hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float lightning_smoothness = 0.01;
+
+
+
+uniform float animate;
+
+uniform float ground_glow_width = 0.7;
+uniform float edge_glow_width = 1.0;
+uniform float distort = 1.5;
+
+
+vec3 neon(float val, vec3 color) {
+	float ramp = clamp(val, 0.0, 1.0);
+	vec3 outp = vec3(0.0);
+	ramp = ramp * ramp;
+	outp += pow(color, vec3(4.0)) * ramp;
+	ramp = ramp * ramp;
+	outp += color * ramp;
+	ramp = ramp * ramp;
+	outp += vec3(1.0) * ramp;
+	return outp;
+}
+
+
+float sample_both_tex(vec2 uv1, vec2 uv2) {
+	return smoothstep(
+		-lightning_smoothness, lightning_smoothness,
+		texture(texture_albedo,uv1).r - texture(texture_albedo,uv2).g
+	);
+}
+
+
+void fragment() {
+	
+	vec4 shield_color = mix(damage_color, primary_color, health);
+	
+	vec2 uv_distort = texture(texture_albedo, UV).bb * distort;
+
+//	vec2 base_uv1 = UV * 2.0 + vec2(0.0, animate) + uv_distort;
+//	vec2 base_uv2 = UV * 2.0 + vec2(animate, 0.0)+ uv_distort;
+	vec2 base_uv1 = UV * 2.0 + vec2(0.0, TIME/10.0) + uv_distort;
+	vec2 base_uv2 = UV * 2.0 + vec2(TIME/10.0, 0.0)+ uv_distort;
+
+	float center = sample_both_tex(base_uv1, base_uv2);
+	float lightning = clamp((0.5 - abs(center - 0.5)) * 1.5, 0.0, 1.0);
+	
+	float edge_glow = pow(1.0 - dot(NORMAL, VIEW) /edge_glow_width, 2.0);
+
+	
+	// highlight when near surfaces
+	float depth_tex = textureLod(DEPTH_TEXTURE,SCREEN_UV,0.0).r;
+	vec4 world_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV*2.0-1.0,depth_tex*2.0-1.0,1.0);
+	world_pos.xyz/=world_pos.w;
+	float near_surface = clamp(1.0-smoothstep(world_pos.z+ground_glow_width,world_pos.z,VERTEX.z),0.0,1.0);
+	//ALPHA=
+	near_surface = clamp(1.0 - near_surface, 0.0, 1.0);
+	
+	float intensity = 0.0;
+		
+	if (UV.g > (1.0 - shield_level)) {
+		intensity += clamp(lightning, 0.0, 1.0);
+		intensity += edge_glow;
+	}
+	intensity += near_surface;
+	
+	float damage = 1.0 - health;
+	vec3 lightning_color = neon(intensity - damage * 0.25, shield_color.rgb);
+
+	ALBEDO = lightning_color;
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=5]
+seed = 33
+octaves = 1
+period = 211.1
+persistence = 1.0
+lacunarity = 1.66
+
+[sub_resource type="NoiseTexture" id=6]
+flags = 39
+seamless = true
+as_normalmap = true
+bump_strength = 13.4
+noise = SubResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/health = 1.0
+shader_param/shield_level = 1.0
+shader_param/primary_color = Color( 1, 0.00392157, 0.00392157, 1 )
+shader_param/damage_color = Color( 0, 0, 0, 1 )
+shader_param/lightning_smoothness = 0.01
+shader_param/animate = -0.032
+shader_param/ground_glow_width = 0.814
+shader_param/edge_glow_width = 0.485
+shader_param/distort = 1.945
+shader_param/texture_albedo = SubResource( 6 )
+
+[sub_resource type="SphereShape" id=4]
+radius = 33.492
+
+[node name="orbo" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" parent="." index="0"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 4 )
+
+[node name="crosshair" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )

@@ -1,0 +1,55 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemyObjs/testingMonster/aLargehulkingCentipede.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://src/enemy/aLargeHulkingCentipede/aLargeHulkingCentipede.gd" type="Script" id=3]
+[ext_resource path="res://assets/shootSounds/Laser_shoot 30-mod.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/colormaterials/blue.tres" type="Material" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 43, 35, 80 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, -2.21747, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 200.0
+scale = 50.0
+scale_curve = SubResource( 3 )
+
+[sub_resource type="CubeMesh" id=5]
+material = ExtResource( 5 )
+
+[node name="aLargeHulkingCentipede" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" parent="." index="0"]
+transform = Transform( -4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -3, 0, 35 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="shootPlayer" parent="noises" index="2"]
+stream = ExtResource( 4 )
+
+[node name="crosshair" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -71 )
+
+[node name="reAppearParticles" type="Particles" parent="." index="8"]
+emitting = false
+amount = 32
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )

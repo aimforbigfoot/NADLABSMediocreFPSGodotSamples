@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/jfxr/Laser_shoot 16.wav" type="AudioStream" id=2]
+[ext_resource path="res://src/enemy/bouncer/bouncer.gd" type="Script" id=3]
+[ext_resource path="res://assets/enemyObjs/testingMonster/monkeyagain.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/jfxr/Explosion 18.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/colormaterials/blue.tres" type="Material" id=6]
+
+[sub_resource type="SphereShape" id=1]
+radius = 39.0
+
+[node name="bouncer" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" parent="." index="0"]
+transform = Transform( -15, 0, -2.26494e-06, 0, 15, 0, 2.26494e-06, 0, -15, 0, 15, 6 )
+material_override = ExtResource( 6 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27, 17.6326 )
+shape = SubResource( 1 )
+
+[node name="noisePlayer" parent="noises" index="0"]
+stream = ExtResource( 5 )
+
+[node name="shootPlayer" parent="noises" index="2"]
+stream = ExtResource( 2 )
+
+[node name="crosshair" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.2329, -21.864 )

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/homeScreens/Base2DScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/texts/Kenney Mini Square.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/homeScreens/BaseButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/homeScreens/titleScreen/TitleScreen.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="TitleScreen" instance=ExtResource( 1 )]
+script = ExtResource( 7 )
+
+[node name="Label" parent="ScrollContainer/VBoxContainer" index="0"]
+margin_left = 112.0
+margin_top = 154.0
+margin_right = 1168.0
+margin_bottom = 234.0
+text = "A BAD Retro Doom eternal Clone"
+
+[node name="backButton" parent="ScrollContainer/VBoxContainer" index="1"]
+margin_top = 238.0
+margin_bottom = 311.0
+
+[node name="play" parent="ScrollContainer/VBoxContainer" index="2" instance=ExtResource( 3 )]
+margin_left = 580.0
+margin_top = 315.0
+margin_right = 699.0
+margin_bottom = 388.0
+text = "play"
+
+[node name="settings" parent="ScrollContainer/VBoxContainer" index="3" instance=ExtResource( 3 )]
+margin_left = 538.0
+margin_top = 392.0
+margin_right = 741.0
+margin_bottom = 465.0
+text = "settings"
+
+[node name="about" parent="ScrollContainer/VBoxContainer" index="4" instance=ExtResource( 3 )]
+margin_left = 567.0
+margin_top = 469.0
+margin_right = 712.0
+margin_bottom = 542.0
+text = "About"
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" index="5"]
+margin_top = 546.0
+margin_right = 1280.0
+margin_bottom = 566.0
+custom_fonts/font = SubResource( 1 )
+text = "A work by nad labs "
+align = 1
+valign = 1

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/imgs/ground/Ground026_2K_AmbientOcclusion.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/ground/Ground026_2K_Roughness.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/ground/Ground026_2K_Normal.jpg" type="Texture" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1000, 20, 1000 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0, 0, 1 )
+roughness = 0.0
+roughness_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = ExtResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 10, 10, 10 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
+size = Vector3( 2000, 40, 2000 )
+
+[node name="largeWall" type="StaticBody"]
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null

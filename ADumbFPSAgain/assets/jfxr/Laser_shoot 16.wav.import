@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Laser_shoot 16.wav-c82c2d8b3100445adae8ba188c48d9db.sample"
+
+[deps]
+
+source_file="res://assets/jfxr/Laser_shoot 16.wav"
+dest_files=[ "res://.import/Laser_shoot 16.wav-c82c2d8b3100445adae8ba188c48d9db.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

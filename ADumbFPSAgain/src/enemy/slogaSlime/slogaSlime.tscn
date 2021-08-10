@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/slogaSlime/slogaSlime.gd" type="Script" id=2]
+[ext_resource path="res://assets/enemyObjs/slogaSlime/slogaSlimeTop.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://src/enemy/slogaSlime/slogaSlimebottom.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/jfxr/Explosion 20.wav" type="AudioStream" id=5]
+[ext_resource path="res://src/enemy/enemyLaser/laserArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/colormaterials/green.tres" type="Material" id=8]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 2.5
+height = 5.0
+
+[sub_resource type="SpatialMaterial" id=2]
+emission_enabled = true
+emission = Color( 1, 0.85098, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 48, 39, 25 )
+
+[sub_resource type="Animation" id=4]
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 0.31864, 1.1487 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0.997, 0.943, 1 ), Vector3( 1.402, 0.949, 1 ) ]
+}
+
+[node name="slogaSlime" groups=[
+"ground",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.97888, 0 )
+material_override = ExtResource( 8 )
+
+[node name="slogaSlimebottom" parent="MeshInstance" index="0" instance=ExtResource( 4 )]
+transform = Transform( 5.39268, 0, 0, 0, 6.69957, 0, 0, 0, 8, 0, 48.4765, 0 )
+
+[node name="slogaSlimeTop" type="MeshInstance" parent="MeshInstance" index="1"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 29.4238, 0 )
+material_override = ExtResource( 8 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="MeshInstance/slogaSlimeTop" index="0"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.38623, 5.29465, 1.50259 )
+material_override = ExtResource( 8 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="MeshInstance/slogaSlimeTop" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.61454, 5.34001, 1.40606 )
+material_override = ExtResource( 8 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="laserArea" parent="MeshInstance" index="2" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 25, 1010.7 )
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.0616, 0 )
+shape = SubResource( 3 )
+
+[node name="noisePlayer" parent="noises" index="0"]
+stream = ExtResource( 5 )
+
+[node name="crosshair" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, -3.52466 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8"]
+autoplay = "idle"
+anims/idle = SubResource( 4 )

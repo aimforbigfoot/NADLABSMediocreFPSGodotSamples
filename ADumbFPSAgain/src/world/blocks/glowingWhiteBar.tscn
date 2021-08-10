@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Material.material" type="Material" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 3.57
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 2000, 18, 16 )
+
+[node name="glowingWhiteBar" type="MeshInstance"]
+material_override = ExtResource( 1 )
+mesh = SubResource( 2 )
+material/0 = null

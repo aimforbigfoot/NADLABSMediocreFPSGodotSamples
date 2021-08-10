@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt6.wav-cbfa38b0c7d68cbae163e3dbba89eb78.sample"
+
+[deps]
+
+source_file="res://assets/jfxr/hurt6.wav"
+dest_files=[ "res://.import/hurt6.wav-cbfa38b0c7d68cbae163e3dbba89eb78.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

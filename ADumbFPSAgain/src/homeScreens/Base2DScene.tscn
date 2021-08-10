@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/texts/Kenney Mini Square.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/texts/42size.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/texts/button/pressed.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/texts/button/hover.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/texts/button/normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://src/homeScreens/Base2DScene.gd" type="Script" id=6]
+[ext_resource path="res://assets/texts/button/disabled.tres" type="StyleBox" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "moveIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 3.4822, 0.143587, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -720 ), Vector2( 0, 46.7899 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "moveOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5 ),
+"transitions": PoolRealArray( 3.24901, 0.287175, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 120.952 ), Vector2( 0, -1000 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="Base2DScene" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "moveIn"
+anims/moveIn = SubResource( 1 )
+anims/moveOut = SubResource( 2 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+size_flags_horizontal = 12
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_left = 640.0
+margin_top = 281.0
+margin_right = 640.0
+margin_bottom = 361.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 3 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="backButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+margin_left = 630.0
+margin_top = 365.0
+margin_right = 650.0
+margin_bottom = 438.0
+size_flags_horizontal = 4
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

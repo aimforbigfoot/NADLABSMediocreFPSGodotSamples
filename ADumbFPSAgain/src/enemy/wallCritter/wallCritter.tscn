@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/wallCritter/wallCritter.gd" type="Script" id=2]
+[ext_resource path="res://assets/jfxr/Laser_shoot 12.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/jfxr/Explosion 20.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/enemyObjs/testingMonster/snailShell.tres" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/colormaterials/green.tres" type="Material" id=6]
+[ext_resource path="res://src/enemy/enemyLaser/laserArea.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 49, 14, 44 )
+
+[node name="wallCritter" groups=[
+"wallavoid",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="laserArea" parent="." index="0" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 698, 0 )
+
+[node name="MeshInstance" parent="." index="1"]
+transform = Transform( 50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -11, 0 )
+material_override = ExtResource( 6 )
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="CollisionShape" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0 )
+shape = SubResource( 1 )
+
+[node name="noisePlayer" parent="noises" index="0"]
+stream = ExtResource( 4 )
+
+[node name="shootPlayer" parent="noises" index="2"]
+stream = ExtResource( 3 )
+
+[node name="twop5timer" type="Timer" parent="." index="9"]
+wait_time = 2.5
+autostart = true
+
+[node name="p5timer" type="Timer" parent="." index="10"]
+wait_time = 0.1
+autostart = true
+
+[node name="floorsChecker" type="Spatial" parent="." index="11"]
+
+[node name="floorChecker" type="RayCast" parent="floorsChecker" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1846, 0, -18.834 )
+enabled = true
+cast_to = Vector3( 0, -50, 0 )
+
+[node name="floorChecker2" type="RayCast" parent="floorsChecker" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2762, 0, 18.097 )
+enabled = true
+cast_to = Vector3( 0, -50, 0 )
+
+[node name="floorChecker3" type="RayCast" parent="floorsChecker" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1879, 0, 20.1283 )
+enabled = true
+cast_to = Vector3( 0, -50, 0 )
+
+[node name="floorChecker4" type="RayCast" parent="floorsChecker" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4186, 1.90735e-06, -23.4677 )
+enabled = true
+cast_to = Vector3( 0, -50, 0 )

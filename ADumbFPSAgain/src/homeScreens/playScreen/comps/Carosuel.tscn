@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/texts/42size.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/texts/button/hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/texts/button/normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/texts/button/disabled.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/texts/button/pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://src/homeScreens/playScreen/comps/Carosuel.gd" type="Script" id=6]
+[ext_resource path="res://assets/texts/Kenney Mini Square.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://icon.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 7 )
+
+[node name="Carosuel" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="left" type="Button" parent="."]
+margin_right = 62.0
+margin_bottom = 133.0
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = "<<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="Button" parent="."]
+margin_left = 665.0
+margin_right = 727.0
+margin_bottom = 133.0
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 1 )
+text = ">>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="Label" parent="."]
+margin_left = 235.0
+margin_right = 655.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 420, 0 )
+custom_fonts/font = SubResource( 2 )
+text = "asdfsdf"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Secondary" type="Label" parent="."]
+margin_left = 235.0
+margin_top = 49.0
+margin_right = 655.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 420, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "asdfsdf"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="."]
+margin_top = -101.532
+margin_right = 289.0
+margin_bottom = -30.5322
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 71.0
+margin_top = -11.0
+margin_right = 202.0
+margin_bottom = 120.0
+texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

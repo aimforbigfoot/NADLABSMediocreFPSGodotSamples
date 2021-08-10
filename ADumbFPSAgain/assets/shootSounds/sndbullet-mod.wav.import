@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sndbullet-mod.wav-4cca992656f58285e8ef24ea2d1fc92e.sample"
+
+[deps]
+
+source_file="res://assets/shootSounds/sndbullet-mod.wav"
+dest_files=[ "res://.import/sndbullet-mod.wav-4cca992656f58285e8ef24ea2d1fc92e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BROWNNOISE.wav-f61e959b2094c9957c07a1ef188c2570.sample"
+
+[deps]
+
+source_file="res://assets/shootSounds/BROWNNOISE.wav"
+dest_files=[ "res://.import/BROWNNOISE.wav-f61e959b2094c9957c07a1ef188c2570.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

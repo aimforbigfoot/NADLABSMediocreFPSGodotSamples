@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crunch2.wav-a790e36fe5b2ef4cfc44ae1a07ff9aad.sample"
+
+[deps]
+
+source_file="res://assets/ipadNoises/crunch2.wav"
+dest_files=[ "res://.import/crunch2.wav-a790e36fe5b2ef4cfc44ae1a07ff9aad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

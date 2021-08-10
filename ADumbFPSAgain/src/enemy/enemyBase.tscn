@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Material.material" type="Material" id=1]
+[ext_resource path="res://assets/explison40/Explosion 3.wav" type="AudioStream" id=2]
+[ext_resource path="res://src/enemy/enemyBase.gd" type="Script" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -10.5652, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+linear_accel = 50.0
+linear_accel_random = 1.0
+radial_accel = 100.0
+tangential_accel = 100.0
+scale = 5.0
+scale_curve = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+
+[node name="enemyBase" type="Area" groups=[
+"enemy",
+]]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+[node name="noises" type="Spatial" parent="."]
+
+[node name="noisePlayer" type="AudioStreamPlayer3D" parent="noises"]
+stream = ExtResource( 2 )
+unit_db = 50.0
+
+[node name="diePlayer" type="AudioStreamPlayer3D" parent="noises"]
+
+[node name="shootPlayer" type="AudioStreamPlayer3D" parent="noises"]
+unit_db = 50.0
+
+[node name="extraPlayer" type="AudioStreamPlayer3D" parent="noises"]
+
+[node name="explosionParticles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18, 0 )
+material_override = ExtResource( 1 )
+emitting = false
+amount = 128
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.83
+randomness = 0.86
+visibility_aabb = AABB( -211, -159, -263, 422, 318, 526 )
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="explodeTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, 0, -500 )
+
+[node name="oneSecondTimer" type="Timer" parent="."]
+
+[node name="crosshair" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 30 )

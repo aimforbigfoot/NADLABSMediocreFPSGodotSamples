@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/homeScreens/Base2DScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/homeScreens/BaseButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/homeScreens/settingsScreen/SettingsScreen.gd" type="Script" id=3]
+
+[node name="SettingsScreen" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Label" parent="ScrollContainer/VBoxContainer" index="0"]
+margin_left = 372.0
+margin_top = 243.0
+margin_right = 908.0
+margin_bottom = 323.0
+text = "Settings Screen"
+
+[node name="fullscreenButton" parent="ScrollContainer/VBoxContainer" index="1" instance=ExtResource( 2 )]
+margin_left = 426.0
+margin_top = 327.0
+margin_right = 853.0
+margin_bottom = 400.0
+text = "Fullscreen Toggle"
+
+[node name="backButton" parent="ScrollContainer/VBoxContainer" index="2"]
+margin_left = 578.0
+margin_top = 404.0
+margin_right = 702.0
+margin_bottom = 477.0
+text = "back"
