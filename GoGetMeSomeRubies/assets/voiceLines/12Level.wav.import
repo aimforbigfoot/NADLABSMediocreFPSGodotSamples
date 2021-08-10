@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/12Level.wav-e377a53f1ad1e2a0c563a984cf956411.sample"
+
+[deps]
+
+source_file="res://assets/voiceLines/12Level.wav"
+dest_files=[ "res://.import/12Level.wav-e377a53f1ad1e2a0c563a984cf956411.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

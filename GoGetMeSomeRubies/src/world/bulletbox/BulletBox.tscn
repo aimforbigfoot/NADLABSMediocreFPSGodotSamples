@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/bulletBox/bulletbox.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://src/world/bulletbox/BulletBox.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/Laser_shoot 41.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 18.2092
+height = 6.79382
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.219672, 0.596721, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1, 1, 0.999023, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -15.1053, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+spread = 75.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=7]
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color( 1, 0.988235, 0, 1 )
+emission_energy = 0.5
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=8]
+material = SubResource( 7 )
+
+[node name="BulletBox" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="ff" type="OmniLight" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0 )
+visible = false
+light_color = Color( 1, 0.74902, 0, 1 )
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_specular = 1.0
+omni_range = 40.0
+
+[node name="Particles" type="Particles" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 0 )
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 0.72
+randomness = 1.0
+visibility_aabb = AABB( -75, -47, -90, 150, 94, 180 )
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
+
+[node name="Position3D" type="Position3D" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8056, 0, 0 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Tween2" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -73.871, 0, 0 )
+stream = ExtResource( 3 )
+unit_db = 30.0

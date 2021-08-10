@@ -1,0 +1,18 @@
+[gd_resource type="ArrayMesh" load_steps=2 format=2]
+
+[ext_resource path="res://assets/hubWorld/BETTER/Material_002.material" type="Material" id=1]
+
+[resource]
+resource_name = "Cube002"
+surfaces/0 = {
+"aabb": AABB( 2.37429, -0.276615, 1.36342, 0.0741899, 1.07999, 1.21551 ),
+"array_data": PoolByteArray( 200, 179, 28, 64, 133, 160, 141, 190, 114, 132, 174, 63, 126, 8, 0, 0, 0, 0, 130, 127, 0, 54, 245, 48, 200, 179, 28, 64, 133, 160, 141, 190, 54, 13, 37, 64, 126, 8, 0, 0, 127, 0, 0, 127, 0, 54, 245, 48, 107, 244, 23, 64, 206, 169, 77, 63, 90, 86, 18, 64, 126, 8, 0, 0, 0, 0, 129, 127, 6, 56, 186, 48, 104, 31, 24, 64, 144, 226, 67, 63, 37, 66, 207, 63, 126, 8, 0, 0, 0, 0, 129, 127, 249, 55, 188, 48 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 3, 0, 0, 0, 1, 0, 2, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 1 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}

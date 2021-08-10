@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/6Level.wav-e3eb53a635e4a29a3431d041ad8d992c.sample"
+
+[deps]
+
+source_file="res://assets/voiceLines/6Level.wav"
+dest_files=[ "res://.import/6Level.wav-e3eb53a635e4a29a3431d041ad8d992c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

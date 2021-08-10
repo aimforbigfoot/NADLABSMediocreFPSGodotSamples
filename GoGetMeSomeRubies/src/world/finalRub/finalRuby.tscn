@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/sfx/Pickup_coin 35.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/ruby/finalRuby.tres" type="Material" id=2]
+[ext_resource path="res://assets/bettergen/bettergem.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://src/world/ruby/ruby.gd" type="Script" id=4]
+[ext_resource path="res://src/world/finalRub/finalRuby.gd" type="Script" id=5]
+
+[sub_resource type="SphereShape" id=1]
+radius = 7.0
+
+[sub_resource type="Animation" id=2]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:mesh:surface_1/material:metallic")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 2.8, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.72, 0.39, 1.0, 0.1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:mesh:surface_1/material:normal_scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 16.0, -16.0 ]
+}
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 10.6443, 0, 0, Vector2( 0.526316, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_align_y = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 15.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 4 )
+
+[sub_resource type="PrismMesh" id=6]
+material = ExtResource( 2 )
+
+[node name="finalRuby" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="ruby" type="Area" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ruby"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="ruby"]
+transform = Transform( -5, -7.54979e-07, 0, 7.54979e-07, -5, 0, 0, 0, 5, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ruby"]
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="ruby"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.6115, 0 )
+light_color = Color( 0, 0.392157, 1, 1 )
+light_energy = 5.36
+light_indirect_energy = 16.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 109.0
+
+[node name="OmniLight2" type="OmniLight" parent="ruby"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.3885, 0 )
+light_color = Color( 0, 0.392157, 1, 1 )
+light_energy = 5.36
+light_indirect_energy = 16.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 109.0
+
+[node name="Particles" type="Particles" parent="ruby"]
+amount = 64
+visibility_aabb = AABB( -47, -30, -43, 94, 60, 86 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 6 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ruby"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.46185, 0 )
+stream = ExtResource( 1 )
+unit_db = -32.0

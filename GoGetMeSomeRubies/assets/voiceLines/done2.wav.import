@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/done2.wav-c42c5a48a05cf7a9e704fbf304a171e6.sample"
+
+[deps]
+
+source_file="res://assets/voiceLines/done2.wav"
+dest_files=[ "res://.import/done2.wav-c42c5a48a05cf7a9e704fbf304a171e6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

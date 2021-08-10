@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/grid/grid.png" type="Texture" id=1]
+[ext_resource path="res://src/world/worldBetter/WorldBetter.gd" type="Script" id=2]
+[ext_resource path="res://src/player/theSlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/world/ruby/ruby.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/world/ruby/ruby.gd" type="Script" id=5]
+
+[sub_resource type="CylinderShape" id=4]
+radius = 82.0
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 3, 2, 1 )
+
+[sub_resource type="CubeMesh" id=3]
+material = SubResource( 2 )
+size = Vector3( 164, 164, 1 )
+
+[node name="WorldBetter" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="floor" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 90, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="floor"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="floor"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="theSlayer" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 96, 64 )
+
+[node name="ruby" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 102, 0 )
+script = ExtResource( 5 )
+
+[node name="spawnBlocks" type="Timer" parent="."]
+
+[node name="blockFolder" type="Spatial" parent="."]

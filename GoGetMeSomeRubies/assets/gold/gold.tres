@@ -1,0 +1,21 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://assets/gold/Metal034_1K_Color.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/gold/Metal034_1K_Roughness.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/gold/Metal034_1K_Metalness.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/gold/Metal034_1K_Normal.jpg" type="Texture" id=4]
+
+[resource]
+albedo_texture = ExtResource( 1 )
+metallic = 0.37
+metallic_specular = 1.0
+metallic_texture = ExtResource( 3 )
+roughness_texture = ExtResource( 2 )
+emission_enabled = true
+emission = Color( 1, 0.988235, 0.0431373, 1 )
+emission_energy = 0.4
+emission_operator = 0
+emission_on_uv2 = true
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )

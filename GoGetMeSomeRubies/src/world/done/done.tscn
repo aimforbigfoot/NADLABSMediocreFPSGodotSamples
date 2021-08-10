@@ -1,0 +1,146 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/world/grabPost/goldPost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/player/theSlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/world/done/done.gd" type="Script" id=3]
+[ext_resource path="res://assets/voiceLines/done1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/voiceLines/done2.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/gwjStuff/GWJ-33-WC-1-fun.png" type="Texture" id=6]
+[ext_resource path="res://assets/gwjStuff/GWJ-33-WC-3.png" type="Texture" id=7]
+[ext_resource path="res://assets/gwjStuff/GWJ-33-WC-2a.png" type="Texture" id=8]
+[ext_resource path="res://assets/gwjStuff/youarentthehero.png" type="Texture" id=9]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+flip_faces = true
+size = Vector3( 500, 500, 500 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( 250, 250, 250, -250, 250, 250, -250, -250, 250, 250, -250, 250, 250, 250, 250, -250, -250, 250, -250, 250, -250, 250, 250, -250, 250, -250, -250, -250, -250, -250, -250, 250, -250, 250, -250, -250, 250, 250, -250, 250, 250, 250, 250, -250, 250, 250, -250, -250, 250, 250, -250, 250, -250, 250, -250, 250, 250, -250, 250, -250, -250, -250, -250, -250, -250, 250, -250, 250, 250, -250, -250, -250, -250, 250, 250, 250, 250, 250, 250, 250, -250, -250, 250, -250, -250, 250, 250, 250, 250, -250, 250, -250, 250, -250, -250, 250, -250, -250, -250, 250, -250, -250, 250, -250, 250, -250, -250, -250 )
+
+[node name="done" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="goldPost" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 124.222, 0, 0 )
+randPos = false
+
+[node name="goldPost2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -130.778, 0, 0 )
+randPos = false
+
+[node name="goldPost3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -130.778, 144, 0 )
+randPos = false
+
+[node name="goldPost4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130.222, 144, 0 )
+randPos = false
+
+[node name="goldPost5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 130.222, 144, 173 )
+randPos = false
+
+[node name="goldPost6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -130.778, 144, 173 )
+randPos = false
+
+[node name="goldPost7" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -130.778, 144, -155 )
+randPos = false
+
+[node name="goldPost8" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 135.222, 144, -155 )
+randPos = false
+
+[node name="goldPost9" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40642, 144, 12 )
+randPos = false
+
+[node name="goldPost10" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -119.778, -52, 0 )
+randPos = false
+
+[node name="goldPost11" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 135.222, -52, 0 )
+randPos = false
+
+[node name="goldPost12" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 135.222, -196, 0 )
+randPos = false
+
+[node name="goldPost13" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -125.778, -196, 0 )
+randPos = false
+
+[node name="goldPost14" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -125.778, -196, 173 )
+randPos = false
+
+[node name="goldPost15" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 135.222, -196, 173 )
+randPos = false
+
+[node name="goldPost16" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 135.222, -196, -155 )
+randPos = false
+
+[node name="goldPost17" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -130.778, -196, -155 )
+randPos = false
+
+[node name="goldPost18" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 5.85012, -196, 12 )
+randPos = false
+
+[node name="theSlayer" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+unit_db = 50.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 50.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 1, 0, 0, -175 )
+visible = false
+billboard = 1
+texture = ExtResource( 9 )
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, -125, -74, -175 )
+visible = false
+billboard = 1
+texture = ExtResource( 6 )
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, 4, -74, -175 )
+visible = false
+billboard = 1
+texture = ExtResource( 8 )
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, 140, -74, -175 )
+visible = false
+billboard = 1
+texture = ExtResource( 7 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

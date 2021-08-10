@@ -1,0 +1,191 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/hubWorld/BETTER/comps/backTut.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://src/player/theSlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/hubWorld/BETTER/comps/top.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/hubWorld/BETTER/comps/mainRoom.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/hubWorld/BETTER/comps/failRoom.tres" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/hubWorld/BETTER/comps/tutFloor.tres" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/Tiles036_1K-JPG/Tiles036_1K_Color.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/pavingstones071/PavingStones071_1K_Color.jpg" type="Texture" id=8]
+[ext_resource path="res://src/world/grabPost/goldPost.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/man/Man.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/world/hubWorld/hubDoors.tscn" type="PackedScene" id=11]
+
+[sub_resource type="SpatialMaterial" id=1]
+params_cull_mode = 1
+albedo_color = Color( 0.647059, 0, 0.486275, 1 )
+albedo_texture = ExtResource( 7 )
+uv1_scale = Vector3( 4.872, -7.681, 1.037 )
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( 6.1426, 2, 1, -6.1426, 2, -1, 6.1426, 2, -1, -6.1426, 2, -1, -0.6532, 2, 1, -6.1426, 2, 1, 0.7839, 2, 1, -6.1426, 2, -1, 6.1426, 2, 1, -6.1426, 2, -1, 0.7839, 2, 1, -0.6532, 2, 1, 6.1426, 0, 1, 0.7839, 2, 1, 6.1426, 2, 1, 6.1426, 0, 1, 1.4698, 0, 1, 0.7839, 2, 1, -6.1426, 0, 1, -6.1426, 2, -1, -6.1426, 2, 1, -6.1426, 0, 1, -6.1426, 0, -1, -6.1426, 2, -1, 6.1426, 0, -1, 6.1426, 2, 1, 6.1426, 2, -1, 6.1426, 0, -1, 6.1426, 0, 1, 6.1426, 2, 1, -6.1426, 0, -1, 6.1426, 2, -1, -6.1426, 2, -1, -6.1426, 0, -1, 6.1426, 0, -1, 6.1426, 2, -1, 0.7839, 2, 3.0932, -0.7846, 2.1788, 7.9259, -0.6532, 2, 3.0932, 0.7839, 2, 3.0932, 0.9094, 2.1788, 7.9259, -0.7846, 2.1788, 7.9259, -0.6861, 0, 1.0081, -6.1426, 2, 1, -0.6532, 2, 1, -0.6861, 0, 1.0081, -6.1426, 0, 1, -6.1426, 2, 1, -0.6532, 2, 1, -0.6444, -0.3207, 1.1605, -0.6861, 0, 1.0081, -0.6532, 2, 1, -0.656, 2.2428, 1.1594, -0.6444, -0.3207, 1.1605, 0.7839, 2, 1, -0.6532, 2, 3.0932, -0.6532, 2, 1, 0.7839, 2, 1, 0.7839, 2, 3.0932, -0.6532, 2, 3.0932, 1.4698, 0, 1.3634, 0.7839, 2, 1, 1.4698, 0, 1, 0.7839, 2, 3.0932, 1.4698, 0, 2.5789, 1.4698, 0, 3.0932, 0.7839, 2, 3.0932, 1.1186, 1.024, 2.2865, 1.4698, 0, 2.5789, 1.131, 0.9878, 1.6192, 0.7839, 2, 1, 1.4698, 0, 1.3634, 0.7839, 2, 3.0932, 1.131, 0.9878, 1.6192, 1.1186, 1.024, 2.2865, 0.7839, 2, 1, 1.131, 0.9878, 1.6192, 0.7839, 2, 3.0932, 1.4698, 0, 3.0932, 0.9094, 2.1788, 7.9259, 0.7839, 2, 3.0932, 1.4698, 0, 3.0932, 1.7179, -0.1788, 7.9259, 0.9094, 2.1788, 7.9259, -0.6532, 2, 3.0932, -1.5161, -0.1788, 7.9259, -1.2738, 0, 3.0932, -0.6532, 2, 3.0932, -0.7846, 2.1788, 7.9259, -1.5161, -0.1788, 7.9259, 1.4698, 0, 1.3634, 2.3769, 0.7652, 1.6192, 1.131, 0.9878, 1.6192, 1.4698, 0, 1.3634, 2.4485, -0.2766, 1.3634, 2.3769, 0.7652, 1.6192, 1.1186, 1.024, 2.2865, 2.4485, -0.2766, 2.5789, 1.4698, 0, 2.5789, 1.1186, 1.024, 2.2865, 2.3743, 0.8034, 2.2865, 2.4485, -0.2766, 2.5789, 1.131, 0.9878, 1.6192, 2.3743, 0.8034, 2.2865, 1.1186, 1.024, 2.2865, 1.131, 0.9878, 1.6192, 2.3769, 0.7652, 1.6192, 2.3743, 0.8034, 2.2865, -1.2738, 0, 3.0932, -2.2382, 2.4371, 3.0932, -0.6532, 2, 3.0932, -1.2738, 0, 3.0932, -2.2729, 0.0339, 3.0758, -2.2382, 2.4371, 3.0932, -0.6532, 2, 3.0932, -0.656, 2.2428, 1.1594, -0.6532, 2, 1, -0.6532, 2, 3.0932, -2.2382, 2.4371, 3.0932, -0.656, 2.2428, 1.1594, -3.7352, 2.2425, 1.1272, -3.5493, -0.2273, 2.8186, -3.7483, 0.0464, 1.2942, -3.7352, 2.2425, 1.1272, -3.6993, 2.4368, 3.0932, -3.5493, -0.2273, 2.8186, -0.656, 2.2428, 1.1594, -3.7483, 0.0464, 1.2942, -0.6444, -0.3207, 1.1605, -0.656, 2.2428, 1.1594, -3.7352, 2.2425, 1.1272, -3.7483, 0.0464, 1.2942, -2.2382, 2.4371, 3.0932, -3.7352, 2.2425, 1.1272, -0.656, 2.2428, 1.1594, -2.2382, 2.4371, 3.0932, -3.6993, 2.4368, 3.0932, -3.7352, 2.2425, 1.1272, -2.2729, 0.0339, 3.0758, -3.6993, 2.4368, 3.0932, -2.2382, 2.4371, 3.0932, -2.2729, 0.0339, 3.0758, -3.5493, -0.2273, 2.8186, -3.6993, 2.4368, 3.0932, 1.7179, -0.1788, 7.9259, 1.5204, 3.0488, 9.3747, 0.9094, 2.1788, 7.9259, 1.7179, -0.1788, 7.9259, 2.9256, -1.0488, 9.3747, 1.5204, 3.0488, 9.3747, -0.7846, 2.1788, 7.9259, -2.6954, -1.0488, 9.3747, -1.5161, -0.1788, 7.9259, -0.7846, 2.1788, 7.9259, -1.424, 3.0488, 9.3747, -2.6954, -1.0488, 9.3747, 0.9094, 2.1788, 7.9259, -1.424, 3.0488, 9.3747, -0.7846, 2.1788, 7.9259, 0.9094, 2.1788, 7.9259, 1.5204, 3.0488, 9.3747, -1.424, 3.0488, 9.3747 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+
+[sub_resource type="NoiseTexture" id=4]
+seamless = true
+noise = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+params_cull_mode = 1
+albedo_color = Color( 0, 0.0352941, 0.415686, 1 )
+albedo_texture = SubResource( 4 )
+
+[sub_resource type="ConcavePolygonShape" id=6]
+data = PoolVector3Array( 5.6596, -2.9936, 11.7062, 2.8408, 4.9292, 20.6762, 2.7644, 4.9107, 11.8407, 5.6596, -2.9936, 11.7062, 5.5359, -2.9907, 20.6762, 2.8408, 4.9292, 20.6762, 5.5359, -2.9907, 20.6762, -2.8059, 4.9292, 20.6762, 2.8408, 4.9292, 20.6762, 5.5359, -2.9907, 20.6762, -5.2442, -2.9907, 20.6762, -2.8059, 4.9292, 20.6762, -3.3018, 4.9107, 11.8407, -5.2442, -2.9907, 20.6762, -5.9212, -2.9936, 11.7062, -3.3018, 4.9107, 11.8407, -2.8059, 4.9292, 20.6762, -5.2442, -2.9907, 20.6762, 2.7644, 4.9107, 11.8407, -2.8059, 4.9292, 20.6762, -3.3018, 4.9107, 11.8407, 2.7644, 4.9107, 11.8407, 2.8408, 4.9292, 20.6762, -2.8059, 4.9292, 20.6762, 1.5204, 3.0488, 9.3747, -3.3018, 4.9107, 11.8407, -1.424, 3.0488, 9.3747, 1.5204, 3.0488, 9.3747, 2.7644, 4.9107, 11.8407, -3.3018, 4.9107, 11.8407, -1.424, 3.0488, 9.3747, -5.9212, -2.9936, 11.7062, -2.6954, -1.0488, 9.3747, -1.424, 3.0488, 9.3747, -3.3018, 4.9107, 11.8407, -5.9212, -2.9936, 11.7062, 2.9256, -1.0488, 9.3747, 2.7644, 4.9107, 11.8407, 1.5204, 3.0488, 9.3747, 2.9256, -1.0488, 9.3747, 5.6596, -2.9936, 11.7062, 2.7644, 4.9107, 11.8407 )
+
+[sub_resource type="SpatialMaterial" id=7]
+params_cull_mode = 1
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=8]
+data = PoolVector3Array( 2.4485, -0.2766, 1.3634, 2.3743, 0.8034, 2.2865, 2.3769, 0.7652, 1.6192, 2.4485, -0.2766, 1.3634, 2.4485, -0.2766, 2.5789, 2.3743, 0.8034, 2.2865 )
+
+[sub_resource type="SpatialMaterial" id=9]
+params_cull_mode = 1
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=10]
+data = PoolVector3Array( -5.9212, -2.9936, 11.7062, 5.5359, -2.9907, 20.6762, 5.6596, -2.9936, 11.7062, -5.9212, -2.9936, 11.7062, -5.2442, -2.9907, 20.6762, 5.5359, -2.9907, 20.6762, -2.6954, -1.0488, 9.3747, 5.6596, -2.9936, 11.7062, 2.9256, -1.0488, 9.3747, -2.6954, -1.0488, 9.3747, -5.9212, -2.9936, 11.7062, 5.6596, -2.9936, 11.7062 )
+
+[sub_resource type="SpatialMaterial" id=11]
+params_cull_mode = 1
+albedo_color = Color( 0.407843, 0, 0, 1 )
+albedo_texture = ExtResource( 8 )
+uv1_scale = Vector3( 13.036, 0.074, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=12]
+data = PoolVector3Array( -6.1426, 0, 1, 6.1426, 0, -1, -6.1426, 0, -1, 6.1426, 0, -1, 1.4698, 0, 1, 6.1426, 0, 1, -1.2738, 0, 1, 6.1426, 0, -1, -6.1426, 0, 1, 6.1426, 0, -1, -1.2738, 0, 1, 1.4698, 0, 1, -1.2738, 0, 3.0932, 1.4698, 0, 1, -1.2738, 0, 1, 1.4698, 0, 1.3634, 1.4698, 0, 3.0932, 1.4698, 0, 2.5789, -1.2738, 0, 3.0932, 1.4698, 0, 1.3634, 1.4698, 0, 1, 1.4698, 0, 1.3634, -1.2738, 0, 3.0932, 1.4698, 0, 3.0932, -1.2738, 0, 3.0932, 1.7179, -0.1788, 7.9259, 1.4698, 0, 3.0932, -1.2738, 0, 3.0932, -1.5161, -0.1788, 7.9259, 1.7179, -0.1788, 7.9259, 1.4698, 0, 2.5789, 2.4485, -0.2766, 1.3634, 1.4698, 0, 1.3634, 1.4698, 0, 2.5789, 2.4485, -0.2766, 2.5789, 2.4485, -0.2766, 1.3634, -2.2732, 0.1289, 1.1272, -3.7536, 0.1348, 3.0932, -2.244, 0.1689, 3.0932, -2.2732, 0.1289, 1.1272, -3.7426, 0.1485, 1.1272, -3.7536, 0.1348, 3.0932, -1.2738, 0, 1, -2.244, 0.1689, 3.0932, -1.2738, 0, 3.0932, -1.2738, 0, 1, -2.2732, 0.1289, 1.1272, -2.244, 0.1689, 3.0932, -1.5161, -0.1788, 7.9259, 2.9256, -1.0488, 9.3747, 1.7179, -0.1788, 7.9259, -1.5161, -0.1788, 7.9259, -2.6954, -1.0488, 9.3747, 2.9256, -1.0488, 9.3747 )
+
+[node name="HubWorld" type="Spatial"]
+
+[node name="theSlayer" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.70226, 0 )
+inAHub = true
+
+[node name="world" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="mainWalls" type="MeshInstance" parent="world"]
+transform = Transform( 13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0 )
+material_override = SubResource( 1 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="world/mainWalls"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/mainWalls/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="tutRoff" type="MeshInstance" parent="world"]
+transform = Transform( 13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0 )
+material_override = SubResource( 5 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="world/tutRoff"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/tutRoff/StaticBody"]
+shape = SubResource( 6 )
+
+[node name="failRoom" type="MeshInstance" parent="world"]
+transform = Transform( 13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0 )
+material_override = SubResource( 7 )
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="world/failRoom"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/failRoom/StaticBody"]
+shape = SubResource( 8 )
+
+[node name="Floor" type="MeshInstance" parent="world/failRoom"]
+material_override = SubResource( 9 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="world/failRoom/Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/failRoom/Floor/StaticBody"]
+shape = SubResource( 10 )
+
+[node name="mainAreaFloor" type="MeshInstance" parent="world"]
+transform = Transform( 13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0 )
+material_override = SubResource( 11 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="world/mainAreaFloor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="world/mainAreaFloor/StaticBody"]
+shape = SubResource( 12 )
+
+[node name="points" type="Spatial" parent="."]
+
+[node name="goldPost" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.057, 0 )
+randPos = false
+
+[node name="goldPost2" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.057, 79 )
+randPos = false
+
+[node name="goldPost3" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.057, 171 )
+randPos = false
+
+[node name="goldPost4" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26.057, 244 )
+randPos = false
+
+[node name="goldPost5" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 26.057, 202 )
+randPos = false
+
+[node name="goldPost6" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 26.057, 202 )
+randPos = false
+
+[node name="goldPost7" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2821, 60.057, 202 )
+randPos = false
+
+[node name="goldPost8" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7179, 60.057, 202 )
+randPos = false
+
+[node name="goldPost9" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7179, -8.943, 202 )
+randPos = false
+
+[node name="goldPost10" parent="points" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2821, -8.943, 202 )
+randPos = false
+
+[node name="Man" parent="." instance=ExtResource( 10 )]
+transform = Transform( 4.37114e-07, 0, -5, 0, 5, 0, 5, 0, 4.37114e-07, -36, 15, 28 )
+
+[node name="doors" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.863099, 0 )
+
+[node name="hubDoors" parent="doors" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -68, 1, -9 )
+
+[node name="hubDoors2" parent="doors" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -42, 1, -9 )
+
+[node name="hubDoors3" parent="doors" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 1, -9 )
+
+[node name="hubDoors4" parent="doors" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12, 1, -9 )
+
+[node name="hubDoors5" parent="doors" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 1, -9 )
+
+[node name="hubDoors6" parent="doors" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 60, 1, -9 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/youRestarted2.wav-629506fe08dc26f9b71b75fd514f63cf.sample"
+
+[deps]
+
+source_file="res://assets/voiceLines/youRestarted2.wav"
+dest_files=[ "res://.import/youRestarted2.wav-629506fe08dc26f9b71b75fd514f63cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

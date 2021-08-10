@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/world/grabPost/goldPost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/world/grabPostMoving/movingPost.gd" type="Script" id=2]
+[ext_resource path="res://assets/gold/Metal034_1K_Color.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/gold/Metal034_1K_Roughness.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/gold/Metal034_1K_Normal.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/gold/Metal034_1K_Metalness.jpg" type="Texture" id=6]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 3 )
+metallic = 0.37
+metallic_specular = 1.0
+metallic_texture = ExtResource( 6 )
+roughness_texture = ExtResource( 4 )
+emission_enabled = true
+emission = Color( 1, 0.47451, 0.0431373, 1 )
+emission_energy = 0.4
+emission_operator = 0
+emission_on_uv2 = true
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 5 )
+
+[node name="movingPost" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" parent="GoldOne" index="1"]
+material_override = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="." index="2"]
+
+[node name="Tween2" type="Tween" parent="." index="3"]

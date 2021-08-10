@@ -1,0 +1,178 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/theMan/mouth.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/theMan/eyes.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/theMan/head.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/theMan/hand.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://src/man/Man.gd" type="Script" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("hands/MeshInstance4:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.8, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.785228, -0.638581, -2.38419e-07 ), Vector3( -0.785228, -0.809765, -2.38419e-07 ), Vector3( -0.785228, -0.527593, -2.38419e-07 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hands/MeshInstance5:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.980075, -0.543604, -2.38419e-07 ), Vector3( 0.980075, -0.875247, -2.38419e-07 ), Vector3( 0.980075, -0.523178, -2.38419e-07 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance2:translation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2.78852, 4.70514 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.278091, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MeshInstance2:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -6.487, -180, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("mouth/MeshInstance3:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.8, 2.60693, 4.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -7.46731, 0, 0 ), Vector3( 0, 0, 0 ), Vector3( 7.728, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "talking"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("mouth:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.7, 1.1, 1.5, 2, 2.4, 2.8, 3.2, 3.6, 3.9, 4.4, 4.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -12.302, -180, -3.48564e-06 ), Vector3( 18.268, -180, 6.51335e-06 ), Vector3( 1.842, -180, 1.23137e-06 ), Vector3( -22.493, -180, -7.09515e-06 ), Vector3( 7.322, -180, 2.26358e-06 ), Vector3( 34.206, -180, 1.24713e-05 ), Vector3( -1.702, -180, 1.51717e-06 ), Vector3( 15.555, -180, 7.26615e-06 ), Vector3( -16.131, -180, -2.94208e-06 ), Vector3( 0.320003, -180, 2.34507e-06 ), Vector3( -20.579, -180, -4.76863e-06 ), Vector3( -2.699, -180, 9.69682e-07 ), Vector3( -19.403, -180, -4.71951e-06 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("hands:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.886597, 1.3, 1.74861, 2.4457, 2.77857, 3.2458, 3.69859, 4.2, 4.5, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 180, 0 ), Vector3( -8.47845, 190.314, 3.03341e-06 ), Vector3( -66.3437, -164.789, -13.2284 ), Vector3( -9.72, 180, -3.29691e-06 ), Vector3( -51.6192, 180, -4.73457e-06 ), Vector3( 31.1745, 180, -2.90211e-06 ), Vector3( -89.6456, -180, -0.000224013 ), Vector3( -25.047, 180, -3.66337e-06 ), Vector3( -14.2715, 205.804, 1.30791e-05 ), Vector3( 0, 180, 0 ), Vector3( 41.687, -180, 1.30018e-05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance2:translation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5, 2.1, 2.4, 3, 3.6, 4.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.216599, 0 ), Vector3( 0, 0.646166, 0 ), Vector3( 0, 0.0640734, 0 ), Vector3( 0, 0.951723, 0 ), Vector3( 0, 0.0637168, 0 ), Vector3( 0, 0.653133, 0 ), Vector3( 0, 0.967701, 0 ), Vector3( 0, 0.179683, 0 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.227451, 0.470588, 0.164706, 1 )
+emission_enabled = true
+emission = Color( 0.223529, 0.717647, 0.180392, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Man" type="Spatial"]
+transform = Transform( 5, 0, 8.74228e-07, 0, 5, 0, -8.74228e-07, 0, 5, 0, 1.80755, 0 )
+script = ExtResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -1, 7.94597e-09, -1.51309e-07, -1.71441e-08, 0.986277, 0.165099, 1.50544e-07, 0.165099, -0.986278, 0, 0.18108, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="MeshInstance2"]
+transform = Transform( 1, 0, 0, 0, 0.993598, 0.112978, 0, -0.112978, 0.993598, 0, -0.0811489, 0.00922709 )
+material_override = SubResource( 1 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+anims/talking = SubResource( 4 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="mouth" type="Position3D" parent="."]
+transform = Transform( -1, -4.12135e-08, -1.46943e-07, -7.3924e-08, 0.973159, 0.230135, 1.33514e-07, 0.230135, -0.973159, -5.25698e-08, -0.0473475, 0.300664 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="mouth"]
+transform = Transform( 0.2, 0, 0, 0, 0.198197, -0.0267916, 0, 0.0267916, 0.198197, -9.36968e-08, -0.665867, 0.506202 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="hands" type="Position3D" parent="."]
+transform = Transform( -0.987128, 0.0822656, -0.137153, -0.093196, 0.401045, 0.911305, 0.129974, 0.912357, -0.388216, 0, 0, 0 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="hands"]
+transform = Transform( -0.0551135, -0.0636396, 0.0318198, -0.045, -1.96701e-09, -0.0779423, 0.0551135, -0.0636396, -0.0318198, -0.785228, -0.538349, -2.38419e-07 )
+material_override = SubResource( 2 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="hands"]
+transform = Transform( 0.0541144, 0.0599378, 0.0397378, -0.041972, -0.014059, 0.0783626, 0.0583951, -0.0656491, 0.0194991, 0.980075, -0.498957, -2.38419e-07 )
+material_override = SubResource( 2 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

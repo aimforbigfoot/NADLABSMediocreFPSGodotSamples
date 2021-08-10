@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+uniform sampler2D tex : hint_albedo;
+uniform sampler2D tex2 : hint_albedo;
+uniform float uv_distort = 0.1;
+uniform float stepper = 0.1;
+
+render_mode blend_add,depth_draw_never,cull_disabled,diffuse_burley,specular_schlick_ggx,unshaded;
+
+float sample_both_tex(vec2 uv1, vec2 uv2) {
+	return smoothstep(-stepper, stepper,-texture(tex,uv1).y + texture(tex2,uv2).x);
+}
+
+void fragment() {
+	vec2 base_uv1 = UV * 2.0 + vec2(0.0, TIME/10.0) ;
+	vec2 base_uv2 = UV * 2.0 + vec2(TIME/10.0, 5.0);
+
+	float center = sample_both_tex(base_uv1, base_uv2);
+	ALBEDO.x = center;
+	
+	
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/uv_distort = 0.1
+shader_param/stepper = 0.1
+
+[sub_resource type="SphereMesh" id=3]
+material = SubResource( 2 )
+radius = 12.0
+height = 24.0
+
+[sub_resource type="SphereShape" id=4]
+radius = 12.0
+
+[node name="BallOfEffect" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 4 )

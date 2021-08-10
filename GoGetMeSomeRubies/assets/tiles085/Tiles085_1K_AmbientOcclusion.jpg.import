@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/Tiles085_1K_AmbientOcclusion.jpg-7b0d004af290caf598269b6116df91f0.s3tc.stex"
+path.etc2="res://.import/Tiles085_1K_AmbientOcclusion.jpg-7b0d004af290caf598269b6116df91f0.etc2.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/tiles085/Tiles085_1K_AmbientOcclusion.jpg"
+dest_files=[ "res://.import/Tiles085_1K_AmbientOcclusion.jpg-7b0d004af290caf598269b6116df91f0.s3tc.stex", "res://.import/Tiles085_1K_AmbientOcclusion.jpg-7b0d004af290caf598269b6116df91f0.etc2.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

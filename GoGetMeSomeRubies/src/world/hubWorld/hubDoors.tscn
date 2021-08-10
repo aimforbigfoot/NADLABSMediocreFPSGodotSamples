@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1, 7, 5 )
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 6, 16, 6 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 6, 6, 12 )
+
+[sub_resource type="Shader" id=4]
+code = "/*
+	ゆらゆらシェーダー by あるる（きのもと 結衣）
+	Yurayura Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type spatial;
+// render_mode;
+
+uniform float speed = 0.6;
+uniform float ring_scale = 4.4;
+uniform float wave_scale = 8.454;
+uniform float random_scale = 4.6;
+uniform float noise_scale = 0.03;
+
+
+vec3 hsv2rgb( float h, float s, float v )
+{
+	return (
+		(
+			clamp(
+				abs( fract( h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0
+			,	0.0
+			,	1.0
+			) - 1.0
+		) * s + 1.0
+	) * v;
+}
+
+vec2 random( vec2 pos )
+{ 
+	return fract(
+		sin(
+			vec2(
+				dot(pos, vec2(12.1,78.233))
+			,	dot(pos, vec2(-148.998,-65.233))
+			)
+		) * 43758.5453
+	);
+}
+
+float value_noise( vec2 pos )
+{
+	vec2 p = floor( pos );
+	vec2 f = fract( pos );
+
+	float v00 = random( p + vec2( 0.0, 0.0 ) ).x;
+	float v10 = random( p + vec2( 1.0, 0.0 ) ).x;
+	float v01 = random( p + vec2( 0.0, 1.0 ) ).x;
+	float v11 = random( p + vec2( 1.0, 1.0 ) ).x;
+
+	vec2 u = f * f * ( 1.0 * f );
+
+	return mix( mix( v00, v10, u.x ), mix( v01, v11, u.x ), u.y );
+}
+
+void fragment( )
+{
+	vec2 shift_uv = UV;
+	shift_uv.x += value_noise( UV * random_scale + sin( TIME * speed ) );
+	shift_uv.y += sin( cos( TIME ) * speed );
+	float x = shift_uv.x + sin( shift_uv.y * wave_scale );
+	float f = mod( x * ring_scale + random( UV ).x * noise_scale, 1.0 );
+
+	ALBEDO = hsv2rgb( f, 1.0, 1.0 );
+}
+"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/speed = 1.672
+shader_param/ring_scale = 2.787
+shader_param/wave_scale = 3.694
+shader_param/random_scale = 4.6
+shader_param/noise_scale = 0.03
+
+[sub_resource type="PlaneMesh" id=3]
+material = SubResource( 5 )
+size = Vector2( 15.764, 11.127 )
+
+[node name="hubDoors" type="Area"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0598e-07, 7, -8 )
+shape = SubResource( 6 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -1 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0214542, 8.06835, -15.0748 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0573799, 15.0919, -7.99168 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.74846e-07, 7, -8 )
+mesh = SubResource( 3 )
+material/0 = null

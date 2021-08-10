@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/world/grabPost/goldPost.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/world/spikePost/spikePost.gd" type="Script" id=2]
+[ext_resource path="res://assets/gold/gold.tres" type="Material" id=3]
+
+[sub_resource type="PrismMesh" id=1]
+material = ExtResource( 3 )
+size = Vector3( 9.445, 10, 2 )
+
+[sub_resource type="CylinderShape" id=2]
+radius = 10.0
+height = 8.0
+
+[node name="spikePost" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="3"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 6, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="." index="4"]
+transform = Transform( 4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, -5, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="5"]
+transform = Transform( -3.09086e-08, 0.707107, 0.707107, -1, -4.37114e-08, 0, 3.09086e-08, -0.707107, 0.707107, 4, 0, -4 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="." index="6"]
+transform = Transform( 3.09086e-08, -0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, -0.707107, -4, 0, 4 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="." index="7"]
+transform = Transform( 1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.5, 0, -5.5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="." index="8"]
+transform = Transform( -5.73206e-15, 1.31134e-07, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, 1.31134e-07, 0.5, 0, 5.5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="." index="9"]
+transform = Transform( 3.09086e-08, -0.707107, 0.707107, -1, -4.37114e-08, 0, 3.09086e-08, -0.707107, -0.707107, -3.5, 0, -3.5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="." index="10"]
+transform = Transform( -3.09086e-08, 0.707107, -0.707107, -1, -4.37114e-08, 0, -3.09086e-08, 0.707107, 0.707107, 4.5, 0, 4.5 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="areaOfSpikes" type="Area" parent="." index="11"]
+
+[node name="CollisionShape" type="CollisionShape" parent="areaOfSpikes" index="0"]
+shape = SubResource( 2 )
