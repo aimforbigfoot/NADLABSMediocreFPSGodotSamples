@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/worlds/comps/bumperComps/baseBumper.gd" type="Script" id=1]
+[ext_resource path="res://assets/sfx/Jump 21.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/objs/arrow/arrow.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/materials/colors/red.tres" type="Material" id=4]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 10, 10, 10 )
+
+[sub_resource type="CubeMesh" id=2]
+material = ExtResource( 4 )
+size = Vector3( 20, 20, 20 )
+
+[node name="baseBumper" type="Area"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="dashCollidedPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = 10.0
+
+[node name="arrow" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0 )
+mesh = ExtResource( 3 )
+material/0 = null

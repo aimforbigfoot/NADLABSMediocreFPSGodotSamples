@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/imgs/enemy/xEnemyBunny/threeBunnyEnemyX0.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/enemy/xEnemyBunny/threeBunnyEnemyX2.png" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/enemy/xEnemyBunny/threeBunnyEnemyX4.png" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/enemy/xEnemyBunny/threeBunnyEnemyX1.png" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/enemy/xEnemyBunny/threeBunnyEnemyX3.png" type="Texture" id=6]
+[ext_resource path="res://src/enemy/xEnemyBunny/xEnemyBunny.gd" type="Script" id=7]
+[ext_resource path="res://src/enemy/baseEnemy/groundCol.tscn" type="PackedScene" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "1",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "3",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "2",
+"speed": 25.0
+} ]
+
+[node name="xEnemyBunny" groups=[
+"sniperImmune",
+] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0 )
+script = ExtResource( 7 )
+enemyType = "xEnemyBunny"
+
+[node name="AnimatedSprite3D" parent="rotationalObjects" index="1"]
+frames = SubResource( 1 )
+animation = "3"
+frame = 2
+playing = true
+
+[node name="shootNoisePlayer" parent="." index="5"]
+pitch_scale = 0.45
+
+[node name="jumpTimer" type="Timer" parent="." index="10"]
+wait_time = 3.0
+autostart = true
+
+[node name="afterJumpTimer" type="Timer" parent="." index="11"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Tween" type="Tween" parent="." index="12"]
+playback_process_mode = 0
+
+[node name="Tween2" type="Tween" parent="." index="13"]
+playback_process_mode = 0
+
+[node name="groundCol" parent="." index="14" instance=ExtResource( 8 )]
+
+[node name="upMostArrow" type="RayCast" parent="." index="15"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.05357 )
+enabled = true
+cast_to = Vector3( 0, 100, 0 )
+
+[connection signal="timeout" from="jumpTimer" to="." method="_on_jumpTimer_timeout"]
+[connection signal="timeout" from="afterJumpTimer" to="." method="_on_afterJumpTimer_timeout"]
+[connection signal="tween_completed" from="Tween2" to="." method="_on_Tween2_tween_completed"]
+[connection signal="body_entered" from="groundCol" to="." method="_on_groundCol_body_entered"]

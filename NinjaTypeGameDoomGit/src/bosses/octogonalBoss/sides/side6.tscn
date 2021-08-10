@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/bosses/octogonalBoss/OctogonalBaseFace.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/sides/side6.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://src/bosses/generalBossStuff/HealthOrbLarge.tscn" type="PackedScene" id=3]
+
+[node name="side6" instance=ExtResource( 1 )]
+
+[node name="AnimatedSprite3D" parent="." index="1"]
+frames = ExtResource( 2 )
+animation = "1"
+frame = 1
+
+[node name="HealthOrbLarge" parent="phase1Orbs" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0 )
+
+[node name="HealthOrbLarge2" parent="phase1Orbs" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -4 )
+
+[node name="HealthOrbLarge3" parent="phase1Orbs" index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19, 10 )
+
+[node name="phase2Orbs" parent="." index="3"]
+visible = false
+
+[node name="HealthOrbLarge" parent="phase2Orbs" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0 )
+
+[node name="HealthOrbLarge2" parent="phase2Orbs" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -4 )
+
+[node name="HealthOrbLarge3" parent="phase2Orbs" index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19, 10 )
+
+[node name="HealthOrbLarge4" parent="phase2Orbs" index="3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -19, 10 )
+
+[node name="HealthOrbLarge5" parent="phase2Orbs" index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -19, 10 )
+
+[node name="phase3Orbs" parent="." index="4"]
+visible = false
+
+[node name="HealthOrbLarge" parent="phase3Orbs" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0 )
+
+[node name="HealthOrbLarge2" parent="phase3Orbs" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -4 )
+
+[node name="HealthOrbLarge3" parent="phase3Orbs" index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19, 10 )
+
+[node name="HealthOrbLarge4" parent="phase3Orbs" index="3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -19, 10 )
+
+[node name="HealthOrbLarge5" parent="phase3Orbs" index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -19, 10 )
+
+[node name="HealthOrbLarge6" parent="phase3Orbs" index="5" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0317, 9.84709, -7 )
+
+[node name="HealthOrbLarge9" parent="phase3Orbs" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9683, 10.8471, -7 )
+
+[node name="HealthOrbLarge7" parent="phase3Orbs" index="7" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.447, -0.958267, -2 )
+
+[node name="HealthOrbLarge8" parent="phase3Orbs" index="8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.553, -0.958267, -2 )

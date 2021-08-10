@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slamTypeNoise.wav-2249eced55eba75127173b0931f6ca96.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/olderNoises/slamTypeNoise.wav"
+dest_files=[ "res://.import/slamTypeNoise.wav-2249eced55eba75127173b0931f6ca96.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

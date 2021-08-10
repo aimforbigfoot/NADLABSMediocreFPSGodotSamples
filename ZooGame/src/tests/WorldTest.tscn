@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/enemies/crocDude/newCrocHabitat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/player/Hub/PlayerHub.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/environmentScenes/ambience/AmbienceController.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/enemies/crocDude/crocStare/CrocStare.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemies/monkeyWorld/MonkeyWorld.tscn" type="PackedScene" id=5]
+
+[node name="WorldTest" type="Spatial"]
+
+[node name="PlayerHub" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.064, 0 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41, 0 )
+light_energy = 6.17
+editor_only = true
+omni_range = 440.266
+
+[node name="newCrocHabitat" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.153682, -8.01231, -33.0946 )
+
+[node name="buttonSpots" type="Spatial" parent="."]
+
+[node name="spot" type="Position3D" parent="buttonSpots"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.52303, -5.82067 )
+
+[node name="spot2" type="Position3D" parent="buttonSpots"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.587, 5.821 )
+
+[node name="spot3" type="Position3D" parent="buttonSpots"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.82084, 9.58688, 0.00016524 )
+
+[node name="spot4" type="Position3D" parent="buttonSpots"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.82084, 9.587, 0.000164731 )
+
+[node name="crawlingFolder" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="crawlingFolder" type="Spatial" parent="crawlingFolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="Position3D" type="Position3D" parent="crawlingFolder/crawlingFolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08824, -6.82157 )
+
+[node name="Position3D2" type="Position3D" parent="crawlingFolder/crawlingFolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57543, 5.08824, -6.82157 )
+
+[node name="Position3D3" type="Position3D" parent="crawlingFolder/crawlingFolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56442, 5.08824, -6.82157 )
+
+[node name="crawlingFolder2" type="Spatial" parent="crawlingFolder"]
+
+[node name="Position3D4" type="Position3D" parent="crawlingFolder/crawlingFolder2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.08824, 7.17843 )
+
+[node name="Position3D5" type="Position3D" parent="crawlingFolder/crawlingFolder2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57543, 5.08824, 7.17843 )
+
+[node name="Position3D6" type="Position3D" parent="crawlingFolder/crawlingFolder2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.56442, 5.08824, 7.17843 )
+
+[node name="crawlingFolder3" type="Spatial" parent="crawlingFolder"]
+
+[node name="Position3D7" type="Position3D" parent="crawlingFolder/crawlingFolder3"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.9945, 5.08824, 0.183935 )
+
+[node name="Position3D8" type="Position3D" parent="crawlingFolder/crawlingFolder3"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.9945, 5.08824, -3.39149 )
+
+[node name="Position3D9" type="Position3D" parent="crawlingFolder/crawlingFolder3"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.9945, 5.08824, 3.74835 )
+
+[node name="crawlingFolder4" type="Spatial" parent="crawlingFolder"]
+
+[node name="Position3D10" type="Position3D" parent="crawlingFolder/crawlingFolder4"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.0055, 5.08824, 0.183934 )
+
+[node name="Position3D11" type="Position3D" parent="crawlingFolder/crawlingFolder4"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.0055, 5.08824, -3.39149 )
+
+[node name="Position3D12" type="Position3D" parent="crawlingFolder/crawlingFolder4"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.0055, 5.08824, 3.74835 )
+
+[node name="AmbienceController" parent="." instance=ExtResource( 3 )]
+
+[node name="CrocStare" parent="." instance=ExtResource( 4 )]
+
+[node name="MonkeyWorld" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -19.6121, 10.6117 )

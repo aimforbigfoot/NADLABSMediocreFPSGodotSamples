@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/objs/fans/fanTemp.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://src/worlds/comps/interactiveComps/fan/Fan.gd" type="Script" id=2]
+[ext_resource path="res://assets/objs/arrow/arrow.tres" type="ArrayMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CylinderShape" id=2]
+radius = 10.0
+height = 50.0
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.447368, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 12.844, 11.581 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+scale_curve = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SphereMesh" id=7]
+material = SubResource( 6 )
+radius = 0.5
+height = 1.0
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 12.844, 11.581 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+scale_curve = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.737255, 0.737255, 0.737255, 1 )
+emission_enabled = true
+emission = Color( 0, 0.988235, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=12]
+material = SubResource( 11 )
+
+[node name="Fan" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="fanMesh" type="MeshInstance" parent="."]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
+
+[node name="Position3D" type="Position3D" parent="fanMesh"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.6, 0 )
+
+[node name="fowardPush" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="fowardPush"]
+shape = SubResource( 2 )
+
+[node name="negativePush" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.8895, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="negativePush"]
+shape = SubResource( 2 )
+
+[node name="arrow" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, 2.082, 0, 0, 0, 3, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="back" type="Particles" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -59.8267, 0 )
+visible = false
+amount = 42
+visibility_aabb = AABB( -122, -38, -38, 244, 76, 76 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 7 )
+
+[node name="front" type="Particles" parent="."]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -1, 0 )
+visible = false
+amount = 42
+visibility_aabb = AABB( -122, -38, -38, 244, 76, 76 )
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 12 )

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/bosses/octogonalBoss/OctogonalBaseFace.gd" type="Script" id=1]
+
+[sub_resource type="ConvexPolygonShape" id=1]
+points = PoolVector3Array( -30, -24, 15, 30, -24, 15, 0, 27.708, -14.826, 0, -2.654, -5.332 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+} ]
+
+[node name="OctogonalBaseFace" type="Area" groups=[
+"enemy",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform( 200, 0, 0, 0, 173.205, 0.5, 0, -100, 0.866025, 0, 0, 0 )
+frames = SubResource( 2 )
+animation = "3"
+playing = true
+
+[node name="phase1Orbs" type="Spatial" parent="."]
+
+[node name="phase2Orbs" type="Spatial" parent="."]
+
+[node name="phase3Orbs" type="Spatial" parent="."]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 2, 250, 2 )
+
+[node name="colorBar" type="MeshInstance"]
+mesh = SubResource( 2 )
+material/0 = null

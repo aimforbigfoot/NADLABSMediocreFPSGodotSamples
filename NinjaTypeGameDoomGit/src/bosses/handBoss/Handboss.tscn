@@ -1,0 +1,238 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://src/bosses/handBoss/Handboss.gd" type="Script" id=1]
+[ext_resource path="res://src/bosses/handBoss/hand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/imgs/bosses/handBoss/1/handPhase10.png" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/bosses/handBoss/1/handPhase11.png" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/bosses/handBoss/1/handPhase12.png" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/bosses/handBoss/1/handPhase13.png" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/bosses/handBoss/1/handPhase15.png" type="Texture" id=7]
+[ext_resource path="res://assets/imgs/bosses/handBoss/1/handPhase14.png" type="Texture" id=8]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase306.png" type="Texture" id=9]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase307.png" type="Texture" id=10]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase300.png" type="Texture" id=11]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase301.png" type="Texture" id=12]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase302.png" type="Texture" id=13]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase305.png" type="Texture" id=14]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase309.png" type="Texture" id=15]
+[ext_resource path="res://assets/imgs/bosses/handBoss/2/handPhase24.png" type="Texture" id=16]
+[ext_resource path="res://assets/imgs/bosses/handBoss/2/handPhase21.png" type="Texture" id=17]
+[ext_resource path="res://assets/imgs/bosses/handBoss/2/handPhase25.png" type="Texture" id=18]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase304.png" type="Texture" id=19]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase308.png" type="Texture" id=20]
+[ext_resource path="res://assets/imgs/bosses/handBoss/2/handPhase23.png" type="Texture" id=21]
+[ext_resource path="res://assets/imgs/bosses/handBoss/3/handPhase303.png" type="Texture" id=22]
+[ext_resource path="res://assets/imgs/bosses/handBoss/2/handPhase20.png" type="Texture" id=23]
+[ext_resource path="res://assets/imgs/bosses/handBoss/2/handPhase22.png" type="Texture" id=24]
+[ext_resource path="res://assets/audio/sfx/olderNoises/bossDieAll.wav" type="AudioStream" id=25]
+[ext_resource path="res://assets/audio/sfx/olderNoises/sniperNoise.wav" type="AudioStream" id=26]
+[ext_resource path="res://src/bosses/generalBossStuff/HealthOrbLarge.tscn" type="PackedScene" id=27]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 79, 80, 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.207792, 0.409091, 0.675325, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.834961, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.630682 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_rotate_y = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 163.27
+scale = 20.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=7]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "1",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 20 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "3",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "2",
+"speed": 25.0
+} ]
+
+[node name="Handboss" type="Area" groups=[
+"enemy",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="hand" parent="." groups=[
+"enemy",
+] instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -175, -74.598, 29 )
+
+[node name="hand2" parent="." groups=[
+"enemy",
+] instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 175, -75, 29 )
+
+[node name="faceAndOrbs" type="Spatial" parent="."]
+
+[node name="explosionParticles" type="Particles" parent="faceAndOrbs"]
+emitting = false
+amount = 128
+lifetime = 2.85
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.29
+visibility_aabb = AABB( -153, -122, -4, 306, 244, 8 )
+local_coords = false
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="faceAndOrbs"]
+transform = Transform( 500, 0, 0, 0, 500, 0, 0, 0, 1, 0, 0, 0 )
+frames = SubResource( 9 )
+animation = "1"
+frame = 2
+playing = true
+
+[node name="phase1Orbs" type="Spatial" parent="faceAndOrbs"]
+
+[node name="HealthOrbLarge" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7906, 24.675, 0 )
+
+[node name="HealthOrbLarge2" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2094, 24.675, 0 )
+
+[node name="HealthOrbLarge3" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2094, 76.675, 0 )
+
+[node name="HealthOrbLarge4" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.7906, 76.675, 0 )
+
+[node name="HealthOrbLarge5" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.7906, -77.325, 0 )
+
+[node name="HealthOrbLarge6" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2094, -77.325, 0 )
+
+[node name="HealthOrbLarge7" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 77.2094, 6.675, 0 )
+
+[node name="HealthOrbLarge8" parent="faceAndOrbs/phase1Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78.7906, 6.675, 0 )
+
+[node name="phase2Orbs" type="Spatial" parent="faceAndOrbs"]
+visible = false
+
+[node name="HealthOrbLarge" parent="faceAndOrbs/phase2Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 23, 0 )
+
+[node name="HealthOrbLarge2" parent="faceAndOrbs/phase2Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 23, 0 )
+
+[node name="HealthOrbLarge3" parent="faceAndOrbs/phase2Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 56.5576, -31.9524, 0 )
+
+[node name="HealthOrbLarge4" parent="faceAndOrbs/phase2Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -55.4424, -30.9524, 0 )
+
+[node name="HealthOrbLarge5" parent="faceAndOrbs/phase2Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4424, -29.9524, 0 )
+
+[node name="phase3Orbs" type="Spatial" parent="faceAndOrbs"]
+visible = false
+
+[node name="HealthOrbLarge6" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4424, 34.0476, 0 )
+
+[node name="HealthOrbLarge7" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78.4424, 34.0476, 0 )
+
+[node name="HealthOrbLarge8" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5576, 34.0476, 0 )
+
+[node name="HealthOrbLarge9" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5576, -80.9524, 0 )
+
+[node name="HealthOrbLarge10" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -78.4424, -80.9524, 0 )
+
+[node name="HealthOrbLarge11" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.4424, -26.9524, 0 )
+
+[node name="HealthOrbLarge12" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 0.50004, 0.797496, -0.337581, -0.80092, 0.574138, 0.169977, 0.329374, 0.18538, 0.925822, -0.442398, -26.9524, 0 )
+
+[node name="HealthOrbLarge13" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 0.50004, 0.797496, -0.337581, -0.80092, 0.574138, 0.169977, 0.329374, 0.18538, 0.925822, 32.5576, -26.9524, 0 )
+
+[node name="HealthOrbLarge14" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 78.5576, 79.0476, 0 )
+
+[node name="HealthOrbLarge15" parent="faceAndOrbs/phase3Orbs" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -79.4424, 79.0476, 0 )
+
+[node name="phase1Tween" type="Tween" parent="."]
+
+[node name="moveTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="handClapTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="handTween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="handBackTween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="clapperNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = 7.722
+pitch_scale = 0.17
+
+[node name="hand2Tween" type="Tween" parent="."]
+
+[node name="hand2BackTween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="oneSecondCheckerTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="bossDiePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 25 )
+unit_db = 50.0
+
+[node name="afterExplodeTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="moveTimer" to="." method="_on_moveTimer_timeout"]
+[connection signal="timeout" from="handClapTimer" to="." method="_on_handClapTimer_timeout"]
+[connection signal="tween_completed" from="handTween" to="." method="_on_handTween_tween_completed"]
+[connection signal="tween_completed" from="handBackTween" to="." method="_on_handBackTween_tween_completed"]
+[connection signal="tween_completed" from="hand2Tween" to="." method="_on_hand2Tween_tween_completed"]
+[connection signal="tween_completed" from="hand2BackTween" to="." method="_on_hand2BackTween_tween_completed"]
+[connection signal="timeout" from="oneSecondCheckerTimer" to="." method="_on_oneSecondCheckerTimer_timeout"]
+[connection signal="timeout" from="afterExplodeTimer" to="." method="_on_afterExplodeTimer_timeout"]

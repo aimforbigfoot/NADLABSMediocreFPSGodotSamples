@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/player/gunButton.gd" type="Script" id=1]
+[ext_resource path="res://assets/imgs/picturesOfGun/backDarkRed.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/picturesOfGun/backWhite.png" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/picturesOfGun/backRed.png" type="Texture" id=4]
+
+[node name="gunButton" type="TextureButton"]
+pause_mode = 2
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 4 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 480, 176 )
+
+[connection signal="pressed" from="." to="." method="_on_gunButton_pressed"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/world/blocks/MiniWall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/world/blocks/BaseFloor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/pickup/heart.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/pickup/greenHeart.tscn" type="PackedScene" id=4]
+
+[node name="Stacked3MiniWalls" instance=ExtResource( 2 )]
+
+[node name="MiniWall2" parent="." index="2" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 20, 0 )
+
+[node name="MiniWall3" parent="." index="3" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 35, 0 )
+
+[node name="heart" parent="." index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4562, 0 )
+
+[node name="greenHeart" parent="." index="5" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 42, 0 )

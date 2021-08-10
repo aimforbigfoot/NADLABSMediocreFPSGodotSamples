@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/break1.wav-64aae147eb3958a0fd0373e4b19088d0.sample"
+
+[deps]
+
+source_file="res://assets/sfx/glassBreak/break1.wav"
+dest_files=[ "res://.import/break1.wav-64aae147eb3958a0fd0373e4b19088d0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

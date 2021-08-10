@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/btns/Pressed.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/btns/Hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/btns/Normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/btns/Disabled.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/text/basic32.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="testButton" type="Button"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 300, 50 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 5 )
+text = "TEST SETTINGS"
+__meta__ = {
+"_edit_use_anchors_": false
+}

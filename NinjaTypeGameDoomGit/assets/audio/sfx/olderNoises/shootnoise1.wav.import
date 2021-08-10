@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shootnoise1.wav-31e585d3c82ca1edf2697cbc2b02b83b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/olderNoises/shootnoise1.wav"
+dest_files=[ "res://.import/shootnoise1.wav-31e585d3c82ca1edf2697cbc2b02b83b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

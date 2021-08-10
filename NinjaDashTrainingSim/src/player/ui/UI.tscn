@@ -1,0 +1,142 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/imgs/dashDark.png" type="Texture" id=1]
+[ext_resource path="res://src/player/ui/UI.gd" type="Script" id=2]
+[ext_resource path="res://assets/imgs/dashDarkDark.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "dash"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03, 0.1 ),
+"transitions": PoolRealArray( 2.37841, 0.784584, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.894118, 0.894118, 0.894118, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "dashBack"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.03, 0.1 ),
+"transitions": PoolRealArray( 2.07053, 0.378929, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR.xy = SCREEN_UV.xy;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR.yz = SCREEN_UV.xx;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 6 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+void fragment(){
+	COLOR.xz = SCREEN_UV.xx;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "keyGot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7 ),
+"transitions": PoolRealArray( 1, 0.329877, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 0.972549, 0.294118, 0.411765 ), Color( 1, 0.972549, 0.294118, 0 ) ]
+}
+
+[node name="UI" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dash = SubResource( 1 )
+anims/dashBack = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 640, 400 )
+scale = Vector2( 0.5, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+material = SubResource( 5 )
+position = Vector2( 640, 410 )
+scale = Vector2( 0.5, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+material = SubResource( 8 )
+position = Vector2( 640, 420 )
+scale = Vector2( 0.5, 0.1 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 1, 0.972549, 0.294118, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="colorRectController" type="AnimationPlayer" parent="."]
+anims/keyGot = SubResource( 9 )

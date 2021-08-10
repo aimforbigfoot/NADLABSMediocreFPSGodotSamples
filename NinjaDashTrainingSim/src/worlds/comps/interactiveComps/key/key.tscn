@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/objs/key/key.tres" type="ArrayMesh" id=1]
+[ext_resource path="res://src/worlds/comps/interactiveComps/key/key.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/keyCollected1.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/Pickup_coin 5.wav" type="AudioStream" id=4]
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_no_depth_test = true
+albedo_color = Color( 0.0796911, 0.631775, 0, 1 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "hide"
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 1.3, 2, 2.6 ),
+"transitions": PoolRealArray( 0.435275, 1.8025, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("keyArea/realKey:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 5.8, 6 ),
+"transitions": PoolRealArray( 0.129408, 1, 0.353553, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 3, 3, 3 ), Vector3( 3, 3, 3 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fakeKey:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 5.8, 6 ),
+"transitions": PoolRealArray( 0.133972, 1, 0.203063, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 3, 3, 3 ), Vector3( 3, 3, 3 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("keyArea/realKey:material_override:emission_energy")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("fakeKey/MeshInstance:material_override:albedo_color")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.12549, 1, 0, 1 ), Color( 0.027451, 0.211765, 0, 1 ) ]
+}
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_no_depth_test = true
+metallic = 1.0
+roughness = 0.44
+emission_enabled = true
+emission = Color( 1, 0.968627, 0, 1 )
+emission_energy = 0.541025
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 7, 14, 8 )
+
+[node name="key" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.994727, 0 )
+script = ExtResource( 2 )
+
+[node name="fakeKey" type="Spatial" parent="."]
+transform = Transform( 3.37046, 0, 0, 0, -1.47327e-07, -3.37046, 0, 3.37046, -1.47327e-07, 0, 1.03175, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="fakeKey"]
+material_override = SubResource( 9 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/hide = SubResource( 8 )
+anims/idle = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.9
+
+[node name="keyArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.282, 0 )
+
+[node name="keyMoved" type="AudioStreamPlayer3D" parent="keyArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -33.282, 0 )
+stream = ExtResource( 4 )
+unit_db = 50.0
+
+[node name="keyCollected" type="AudioStreamPlayer3D" parent="keyArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.982, 0 )
+stream = ExtResource( 3 )
+unit_db = 15.0
+
+[node name="realKey" type="MeshInstance" parent="keyArea"]
+transform = Transform( 3.37046, 0, 0, 0, -1.47327e-07, -3.37046, 0, 3.37046, -1.47327e-07, 0, 0, 0 )
+material_override = SubResource( 3 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="keyArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.87389, 0 )
+shape = SubResource( 4 )

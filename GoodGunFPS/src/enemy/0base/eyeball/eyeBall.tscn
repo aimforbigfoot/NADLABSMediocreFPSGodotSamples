@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/objs/enemies/eyeBall/eyes.tres" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=1]
+
+[node name="eyeBall" type="Area"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null

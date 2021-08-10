@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.476596, 1 )
+colors = PoolColorArray( 0, 0.381836, 1, 1, 0.64591, 0.729843, 0.865723, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.503876, 0.713636 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector3( 0, 24, 0 )
+scale = 2.0
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=4]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+size = Vector3( 1, 1, 1 )
+
+[node name="jumpPadParticles" type="Particles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.12242, 0 )
+amount = 64
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )

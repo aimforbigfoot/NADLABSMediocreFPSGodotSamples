@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 25, 6, 24 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.785124, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.435059, 0.435059, 0.435059, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+spread = 180.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+scale = 10.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+size = Vector3( 1, 1, 1 )
+
+[node name="groundCol" type="Area"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20.1272, 0 )
+shape = SubResource( 1 )
+
+[node name="Particles2" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.43195, 0 )
+emitting = false
+amount = 64
+one_shot = true
+speed_scale = 4.0
+explosiveness = 0.73
+randomness = 1.0
+visibility_aabb = AABB( -35.3574, -4, -34.3363, 70.7148, 8, 68.6726 )
+local_coords = false
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )

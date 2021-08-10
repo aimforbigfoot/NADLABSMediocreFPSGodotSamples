@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/bosses/generalBossStuff/baseBossLand.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/bosses/cylinderBoss/CylinderBoss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/bosses/cylinderBoss/cylinderBossLand.gd" type="Script" id=4]
+
+[node name="cylinderBossLand" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="player" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 41.5591, 158 )
+
+[node name="CylinderBoss" parent="." index="5" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58, 0 )

@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/btns/Normal.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/btns/Disabled.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/btns/Hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/btns/Pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/text/basic32.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/inBetweenScene/PowerUpButton.gd" type="Script" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="PowerUpButton" type="Button"]
+margin_right = 1160.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 370, 64 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "50% chance not to use ammo, but also 50% chance to use double ammo"
+expand_icon = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="." to="." method="_on_PowerUpButton_pressed"]

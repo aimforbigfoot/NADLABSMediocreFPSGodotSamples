@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flyingEnemyYShoot.wav-3931bb973b2f9b1d5ca9d2430d26b605.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/olderNoises/flyingEnemyYShoot.wav"
+dest_files=[ "res://.import/flyingEnemyYShoot.wav-3931bb973b2f9b1d5ca9d2430d26b605.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

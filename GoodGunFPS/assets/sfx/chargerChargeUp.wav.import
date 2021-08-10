@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chargerChargeUp.wav-fb742472263897a20e20d62024d19168.sample"
+
+[deps]
+
+source_file="res://assets/sfx/chargerChargeUp.wav"
+dest_files=[ "res://.import/chargerChargeUp.wav-fb742472263897a20e20d62024d19168.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

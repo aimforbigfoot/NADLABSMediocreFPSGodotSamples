@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=2]
+
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/phase3/side84.png" type="Texture" id=1]
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/phase3/side85.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/phase2/side83.png" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/phase1/side80.png" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/phase2/side82.png" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/bosses/octogonalBoss/phase1/side81.png" type="Texture" id=6]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+} ]

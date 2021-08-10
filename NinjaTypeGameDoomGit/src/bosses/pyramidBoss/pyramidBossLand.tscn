@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/bosses/pyramidBoss/pyramidBossLand.gd" type="Script" id=1]
+[ext_resource path="res://src/bosses/generalBossStuff/baseBossLand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/bosses/pyramidBoss/pyramidBoss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/audio/sfx/olderNoises/bossDieAll.wav" type="AudioStream" id=4]
+
+[node name="pyramidBossLand" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="player" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 161, 30, 279 )
+
+[node name="pyramidBoss" parent="." index="5" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 28, 160 )
+
+[node name="bossDiePlayer" type="AudioStreamPlayer3D" parent="." index="7"]
+stream = ExtResource( 4 )
+unit_db = 50.0
+
+[connection signal="bossDie" from="pyramidBoss" to="." method="_on_pyramidBoss_bossDie"]

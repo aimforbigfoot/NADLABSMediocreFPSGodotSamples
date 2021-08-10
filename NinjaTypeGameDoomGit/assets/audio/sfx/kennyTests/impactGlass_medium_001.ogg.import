@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactGlass_medium_001.ogg-2c22fda85a09aa3c2c20ed7c1de73a83.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/kennyTests/impactGlass_medium_001.ogg"
+dest_files=[ "res://.import/impactGlass_medium_001.ogg-2c22fda85a09aa3c2c20ed7c1de73a83.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

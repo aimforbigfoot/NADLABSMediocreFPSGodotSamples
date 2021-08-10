@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/text/basic32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/titleScreen/settingsComps/MouseSensitivitySetting.gd" type="Script" id=2]
+
+[node name="MouseSensitivitySetting" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -280.0
+margin_bottom = -656.0
+rect_min_size = Vector2( 1000, 64 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 308.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Mouse Sensitivity: "
+
+[node name="mouseSensitivitySlider" type="HSlider" parent="HBoxContainer"]
+margin_left = 312.0
+margin_right = 912.0
+margin_bottom = 41.674
+rect_min_size = Vector2( 600, 41.674 )
+min_value = 0.01
+max_value = 0.5
+step = 0.01
+value = 0.2
+tick_count = 100
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+margin_left = 916.0
+margin_right = 964.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "0.2"
+
+[connection signal="value_changed" from="HBoxContainer/mouseSensitivitySlider" to="." method="_on_HSlider_value_changed"]

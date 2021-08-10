@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactSoft_heavy_003.ogg-f49617af49a6d61ffa22105a20caaac9.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/kennyTests/impactSoft_heavy_003.ogg"
+dest_files=[ "res://.import/impactSoft_heavy_003.ogg-f49617af49a6d61ffa22105a20caaac9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

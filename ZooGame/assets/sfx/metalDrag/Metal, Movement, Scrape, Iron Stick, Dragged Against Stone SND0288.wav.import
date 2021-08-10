@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Metal, Movement, Scrape, Iron Stick, Dragged Against Stone SND0288.wav-0d9fd42f6da118a27c935ecd0ec74a66.sample"
+
+[deps]
+
+source_file="res://assets/sfx/metalDrag/Metal, Movement, Scrape, Iron Stick, Dragged Against Stone SND0288.wav"
+dest_files=[ "res://.import/Metal, Movement, Scrape, Iron Stick, Dragged Against Stone SND0288.wav-0d9fd42f6da118a27c935ecd0ec74a66.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

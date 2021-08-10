@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lightBroken.wav-1256cc5fced2fc2de26bc82a53d12ff3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/buttonPresses/lightBroken.wav"
+dest_files=[ "res://.import/lightBroken.wav-1256cc5fced2fc2de26bc82a53d12ff3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

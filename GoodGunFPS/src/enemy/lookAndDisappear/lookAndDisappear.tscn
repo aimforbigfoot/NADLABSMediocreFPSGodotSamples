@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/enemy/0base/enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/objs/enemies/lookAndDisappearMonster/leftHand.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/objs/enemies/lookAndDisappearMonster/body.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/objs/enemies/lookAndDisappearMonster/rightHand.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://src/enemy/lookAndDisappear/lookAndDisappear.gd" type="Script" id=5]
+[ext_resource path="res://assets/objs/enemies/eyeBall/eyes.tres" type="ArrayMesh" id=6]
+[ext_resource path="res://src/enemy/0base/weakPoint/weakPoint.tscn" type="PackedScene" id=7]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 5, 3, 3 )
+
+[node name="lookAndDisappear" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+
+[node name="CollisionShape" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00257874, -0.0194135, -0.00684643 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="meshFolder" index="1"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="meshFolder" index="2"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="meshFolder" index="3"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="weakPoint" parent="meshFolder" index="4" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53951, 4.22776, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="meshFolder/weakPoint" index="2"]
+transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="weakPoint2" parent="meshFolder" index="5" instance=ExtResource( 7 )]
+transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.70204, 4.21969, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="meshFolder/weakPoint2" index="2"]
+transform = Transform( -0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="weakPoint3" parent="." index="6" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23264, 0.855621, -1.63574 )
+
+[node name="weakPoint4" parent="." index="7" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76736, 0.855621, -1.63574 )

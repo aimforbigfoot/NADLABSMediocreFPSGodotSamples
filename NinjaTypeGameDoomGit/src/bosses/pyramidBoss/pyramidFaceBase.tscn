@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/bosses/pyramidBoss/pyramidFaceBase.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "smash"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteAndOrbs/Position3D:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.3 ),
+"transitions": PoolRealArray( 1, 2.82842, 0.353553, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 20, 0, 0 ), Vector3( 125.261, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -30, -24, 15, 30, -24, 15, 0, 27.708, -14.826, 0, -2.654, -5.332 )
+
+[node name="pyramidFaceBase" type="Area" groups=[
+"enemy",
+"rocketImmune",
+]]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/smash = SubResource( 1 )
+
+[node name="SpriteAndOrbs" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="SpriteAndOrbs"]
+transform = Transform( 1, 0, 0, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0, -23, 15 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="SpriteAndOrbs/Position3D"]
+transform = Transform( 200, 0, 0, 0, 173.205, 0.5, 0, -100, 0.866025, 0, 23, -15 )
+animation = "1"
+playing = true
+
+[node name="phase1Orbs" type="Spatial" parent="SpriteAndOrbs/Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, -15 )
+
+[node name="phase2Orbs" type="Spatial" parent="SpriteAndOrbs/Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, -15 )
+
+[node name="phase3Orbs" type="Spatial" parent="SpriteAndOrbs/Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, -15 )
+
+[node name="accArea" type="Area" parent="SpriteAndOrbs/Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.4826, -14.9619 )
+
+[node name="CollisionShape" type="CollisionShape" parent="SpriteAndOrbs/Position3D/accArea"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="SpriteAndOrbs/Position3D/accArea" to="." method="_on_accArea_body_entered"]

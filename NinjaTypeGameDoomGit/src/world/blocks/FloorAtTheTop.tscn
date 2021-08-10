@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/world/blocks/BaseFloor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/world/blocks/WallRegular.tscn" type="PackedScene" id=2]
+
+[node name="FloorAtTheTop" instance=ExtResource( 1 )]
+
+[node name="WallRegular" parent="." index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 130, 0 )
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/world/blocks/MiniWall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/world/blocks/BaseFloor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/pickup/bulletPickup.tscn" type="PackedScene" id=3]
+
+[node name="slantedWall" instance=ExtResource( 2 )]
+
+[node name="MiniWall" parent="." index="2" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 3, -10 )
+
+[node name="MiniWall2" parent="." index="3" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 10, -3 )
+
+[node name="bulletPickup" parent="." index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.31597, 0 )

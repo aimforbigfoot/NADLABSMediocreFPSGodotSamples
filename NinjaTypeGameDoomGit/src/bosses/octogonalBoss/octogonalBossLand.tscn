@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/bosses/generalBossStuff/baseBossLand.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/bosses/generalBossStuff/SimpleTowerBoss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/bosses/octogonalBoss/OctogonalBoss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/bosses/octogonalBoss/octogonalBossLand.gd" type="Script" id=4]
+
+[node name="octogonalBossLand" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+
+[node name="SimpleTowerBoss" parent="WorldStuff" index="64" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44, 5, -41 )
+
+[node name="SimpleTowerBoss2" parent="WorldStuff" index="65" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 44, 5, -277 )
+
+[node name="SimpleTowerBoss3" parent="WorldStuff" index="66" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 281, 5, -277 )
+
+[node name="SimpleTowerBoss4" parent="WorldStuff" index="67" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 281, 5, -37 )
+
+[node name="player" parent="." index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 30, 280 )
+
+[node name="OctogonalBoss" parent="." index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 161, 155, 155 )

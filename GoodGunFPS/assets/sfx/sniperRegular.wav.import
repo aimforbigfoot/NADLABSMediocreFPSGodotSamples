@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sniperRegular.wav-e3b75a0b21006e859e19bf8010c670df.sample"
+
+[deps]
+
+source_file="res://assets/sfx/sniperRegular.wav"
+dest_files=[ "res://.import/sniperRegular.wav-e3b75a0b21006e859e19bf8010c670df.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

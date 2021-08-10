@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hypedBackBeat.wav-063b7eece9b5aeddc63dc3ba96dbe46e.sample"
+
+[deps]
+
+source_file="res://assets/songs/hypedBackBeat.wav"
+dest_files=[ "res://.import/hypedBackBeat.wav-063b7eece9b5aeddc63dc3ba96dbe46e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/bosses/handBoss/hand.gd" type="Script" id=1]
+[ext_resource path="res://src/bosses/handBoss/handTexture.tres" type="Material" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+material = ExtResource( 2 )
+size = Vector3( 7.405, 19.625, 5 )
+
+[sub_resource type="CubeMesh" id=2]
+material = ExtResource( 2 )
+size = Vector3( 32, 19.625, 5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 17, 18, 2 )
+
+[node name="hand" type="Area"]
+script = ExtResource( 1 )
+
+[node name="meshes" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 13, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 13, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 13, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 13, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.402, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_hand_body_entered"]

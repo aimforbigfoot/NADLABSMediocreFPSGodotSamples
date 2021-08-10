@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/keyCollected1.wav-dc95698781c591f8a62d5da1c49e048f.sample"
+
+[deps]
+
+source_file="res://assets/sfx/keyCollected1.wav"
+dest_files=[ "res://.import/keyCollected1.wav-dc95698781c591f8a62d5da1c49e048f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

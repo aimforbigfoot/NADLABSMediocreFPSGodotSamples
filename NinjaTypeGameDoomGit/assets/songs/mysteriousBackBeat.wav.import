@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mysteriousBackBeat.wav-f915e685284a0790f4e89ff7e94cce7c.sample"
+
+[deps]
+
+source_file="res://assets/songs/mysteriousBackBeat.wav"
+dest_files=[ "res://.import/mysteriousBackBeat.wav-f915e685284a0790f4e89ff7e94cce7c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

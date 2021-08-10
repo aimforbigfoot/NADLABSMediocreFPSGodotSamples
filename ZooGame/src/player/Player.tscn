@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/player/Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/player/UI/UI.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.0136529, 0.0101093, 3.61202 )
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_unshaded = true
+flags_no_depth_test = true
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 0.451956, 1.32314, 0.529522 )
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="Camera" type="Camera" parent="head"]
+far = 722.2
+
+[node name="RayCast" type="RayCast" parent="head/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -50 )
+collide_with_areas = true
+
+[node name="Area" type="Area" parent="head/Camera"]
+
+[node name="CollisionShape" type="CollisionShape" parent="head/Camera/Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28 )
+material_override = SubResource( 2 )
+texture = ExtResource( 2 )
+
+[node name="UI" parent="head/Camera" instance=ExtResource( 3 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 3 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hit4.ogg-1767eb96d69c1a399f587b8fd27086f9.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/kennyTests/hit4.ogg"
+dest_files=[ "res://.import/hit4.ogg-1767eb96d69c1a399f587b8fd27086f9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

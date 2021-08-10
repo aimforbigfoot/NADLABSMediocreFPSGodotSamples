@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/imgs/enemy/bulletEnemy/bulletEnemy1.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/enemy/bulletEnemy/bulletEnemy2.png" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/enemy/bulletEnemy/bulletEnemy4.png" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/enemy/bulletEnemy/bulletEnemy0.png" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/enemy/bulletEnemy/bulletEnemy5.png" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/enemy/bulletEnemy/bulletEnemy3.png" type="Texture" id=7]
+[ext_resource path="res://src/enemy/bulletEnemy/bulletEnemy.gd" type="Script" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "1",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "3",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "2",
+"speed": 30.0
+} ]
+
+[node name="bulletEnemy" groups=[
+"flameImmune",
+"rocketImmune",
+"shellImmune",
+] instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+enemyType = "bulletEnemy"
+
+[node name="shootTimer" parent="." index="1"]
+wait_time = 0.1
+
+[node name="AnimatedSprite3D" parent="rotationalObjects" index="1"]
+frames = SubResource( 1 )
+animation = "2"
+frame = 4
+playing = true
+
+[node name="playerCast" parent="rotationalObjects" index="2"]
+cast_to = Vector3( 0, 0, -300 )

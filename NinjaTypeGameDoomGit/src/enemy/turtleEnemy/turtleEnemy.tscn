@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/imgs/enemy/turtle/sprite_2.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/enemy/turtle/sprite_3.png" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/enemy/turtle/sprite_0.png" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/enemy/turtle/sprite_1.png" type="Texture" id=5]
+[ext_resource path="res://src/enemy/turtleEnemy/turtleEnemy.gd" type="Script" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "1",
+"speed": 18.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "2",
+"speed": 22.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "3",
+"speed": 27.0
+} ]
+
+[node name="turtleEnemy" groups=[
+"sniperImmune",
+] instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+enemyType = "turtleEnemy"
+
+[node name="AnimatedSprite3D" parent="rotationalObjects" index="1"]
+frames = SubResource( 1 )
+animation = "3"
+frame = 2
+playing = true
+
+[connection signal="body_entered" from="." to="." method="_on_turtleEnemy_body_entered"]

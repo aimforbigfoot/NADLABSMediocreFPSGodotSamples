@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/bosses/octogonalBoss/Gunner.gd" type="Script" id=1]
+[ext_resource path="res://assets/imgs/grounds/groundSecondRound/Chip001_1K_Color.jpg" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 2 )
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 2 )
+
+[node name="Gunner" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -2.5, 0, 5.1656e-07, 0, 2.5, 0, -1.2914e-07, 0, -10, 0, 7, -14 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -2.5, 0, 5.1656e-07, 0, 2.5, 0, -1.2914e-07, 0, -10, 0, -7, -14 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -2.49996, 0.0148352, 5.16551e-07, 0.0148352, 2.49996, -3.06531e-09, -1.2914e-07, 0, -10, 7, 0, -14 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( -2.5, 0, 5.1656e-07, 0, 2.5, 0, -1.2914e-07, 0, -10, -7, 0, -14 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Position3D" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7 )
+
+[node name="oneSecondTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="oneSecondTimer" to="." method="_on_oneSecondTimer_timeout"]

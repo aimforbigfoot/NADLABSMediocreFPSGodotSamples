@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hurt5.ogg-41bd6983f85465258e836bfae219d34c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/kennyTests/hurt5.ogg"
+dest_files=[ "res://.import/hurt5.ogg-41bd6983f85465258e836bfae219d34c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
