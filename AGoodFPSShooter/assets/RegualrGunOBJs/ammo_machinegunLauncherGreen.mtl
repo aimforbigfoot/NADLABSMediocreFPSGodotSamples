@@ -1,0 +1,11 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl gold
+Kd 0.9764706 0.7058824 0.02352941
+
+newmtl dark
+Kd 0.2666667 0.2666667 0.2666667
+
+newmtl green
+Kd 0.2392157 0.5176471 0.3764706
+

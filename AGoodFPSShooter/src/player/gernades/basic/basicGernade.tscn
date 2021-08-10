@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/RegualrGunOBJs/grenade.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://src/player/gernades/basic/basicGernade.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.494561
+height = 0.825455
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.0588235, 0.181818, 0.326203, 0.465241, 0.657754 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0, 1, 1, 0.568359, 0, 1, 1, 0.943359, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=7]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+size = Vector3( 10, 10, 10 )
+
+[sub_resource type="SphereShape" id=9]
+radius = 29.6509
+
+[node name="basicGernade" type="RigidBody" groups=[
+"gernade",
+"player",
+]]
+mass = 41.97
+contacts_reported = 3
+contact_monitor = true
+can_sleep = false
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238675, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 5, 0, 0, 0, -2.18557e-07, 5, 0, -5, -2.18557e-07, 5.96046e-08, 0.235014, 0.4101 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="Particles" type="Particles" parent="."]
+emitting = false
+amount = 64
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.76
+randomness = 1.0
+visibility_aabb = AABB( -27, -31, -26, 54, 62, 52 )
+local_coords = false
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
+
+[node name="exploisonEffected" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="exploisonEffected"]
+shape = SubResource( 9 )
+disabled = true
+
+[node name="explodeTimer" type="Timer" parent="."]
+
+[node name="startExplode" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_basicGernade_body_entered"]
+[connection signal="body_entered" from="exploisonEffected" to="." method="_on_exploisonEffected_body_entered"]
+[connection signal="timeout" from="explodeTimer" to="." method="_on_explodeTimer_timeout"]
+[connection signal="timeout" from="startExplode" to="." method="_on_startExplode_timeout"]

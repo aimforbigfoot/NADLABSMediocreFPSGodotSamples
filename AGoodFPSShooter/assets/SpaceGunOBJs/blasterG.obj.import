@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/blasterG.obj-d85801bcf148a4cec3a579f0f17f1dcb.mesh"
+
+[deps]
+
+files=[ "res://.import/blasterG.obj-d85801bcf148a4cec3a579f0f17f1dcb.mesh" ]
+
+source_file="res://assets/SpaceGunOBJs/blasterG.obj"
+dest_files=[ "res://.import/blasterG.obj-d85801bcf148a4cec3a579f0f17f1dcb.mesh", "res://.import/blasterG.obj-d85801bcf148a4cec3a579f0f17f1dcb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

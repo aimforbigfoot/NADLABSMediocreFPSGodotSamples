@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/enemies/tours.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://src/enemy/enemyPoints/shooter/EnemyShooter.gd" type="Script" id=2]
+
+[node name="EnemyShooter" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="shootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="shootNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+unit_db = 30.0

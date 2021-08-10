@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/world/floor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/player/effects/exploisonEffects.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/world/World.gd" type="Script" id=5]
+
+[node name="World" type="Spatial"]
+script = ExtResource( 5 )
+
+[node name="worldStuff" type="Spatial" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="worldStuff"]
+transform = Transform( 0.271239, -5.73702e-08, 0.962512, -0.962512, -1.61671e-08, 0.271239, 0, -1, -5.96047e-08, 0, 95.2967, 0 )
+visible = false
+shadow_contact = 16.0
+directional_shadow_blend_splits = true
+
+[node name="exploisonEffects" parent="worldStuff" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.3938, 0 )
+
+[node name="floor" parent="worldStuff" instance=ExtResource( 1 )]
+visible = false
+
+[node name="player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 28, 0 )
+
+[node name="enemyFolder" type="Spatial" parent="."]

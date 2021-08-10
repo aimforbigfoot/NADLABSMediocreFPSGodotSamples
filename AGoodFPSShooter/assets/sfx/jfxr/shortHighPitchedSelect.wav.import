@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shortHighPitchedSelect.wav-c678beb6386e3904b0eebf29a2a8062d.sample"
+
+[deps]
+
+source_file="res://assets/sfx/jfxr/shortHighPitchedSelect.wav"
+dest_files=[ "res://.import/shortHighPitchedSelect.wav-c678beb6386e3904b0eebf29a2a8062d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

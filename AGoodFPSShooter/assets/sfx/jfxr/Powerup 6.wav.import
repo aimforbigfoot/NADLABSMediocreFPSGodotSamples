@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Powerup 6.wav-1e1a1fc6f5d1b1da9ff4711a6acb1a3d.sample"
+
+[deps]
+
+source_file="res://assets/sfx/jfxr/Powerup 6.wav"
+dest_files=[ "res://.import/Powerup 6.wav-1e1a1fc6f5d1b1da9ff4711a6acb1a3d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

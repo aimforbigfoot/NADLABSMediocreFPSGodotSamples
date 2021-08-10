@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/materials/colorMaterials/darkGrey.tres" type="Material" id=1]
+[ext_resource path="res://src/world/floor.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2000, 1, 2000 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 400, 2, 400 )
+
+[node name="floor" type="StaticBody" groups=[
+"explodeable",
+]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="spawnPoints" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -133 )
+
+[node name="Position3D3" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -141, 1, 144 )
+
+[node name="Position3D4" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -154, 1, -141 )
+
+[node name="Position3D5" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -155, 1, 16 )
+
+[node name="Position3D6" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 157 )
+
+[node name="Position3D7" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 116, 1, 114 )
+
+[node name="Position3D8" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 137.929, 1, -5.39005 )
+
+[node name="Position3D2" type="Position3D" parent="spawnPoints"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 117, 1, -143 )

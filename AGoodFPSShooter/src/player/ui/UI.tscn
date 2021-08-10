@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="UI" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1280, 720 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

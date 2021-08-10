@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/enemy/enemyPoints/bullet/enemyBullet.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=5]
+radius = 3.20793
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+uniform float TWO_PI = 6.4238;
+uniform float spd1 = 2.0;
+uniform float spd2 = 8.0;
+uniform float spd3 = 4.0;
+
+vec3 hsb2rgb( vec3 c ){
+    vec3 rgb = clamp(abs(mod(c.x*22.792+vec3(0.0,4.0,2.0),
+                             6.0)-3.0)-1.0,0.0,1.0 );
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * mix( vec3(1.0), rgb, c.y);
+}
+
+
+void fragment() {
+	ALBEDO = hsb2rgb(vec3((TIME/TWO_PI)+0.5,2.0,1.0))  ;
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/TWO_PI = 6.4238
+shader_param/spd1 = 2.0
+shader_param/spd2 = 8.0
+shader_param/spd3 = 4.0
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
+radius = 3.0
+height = 6.0
+radial_segments = 16
+rings = 16
+
+[node name="enemyBullet" type="Area" groups=[
+"bullet",
+"enemy",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="despawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

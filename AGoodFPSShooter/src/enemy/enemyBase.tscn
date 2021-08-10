@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.gd" type="Script" id=1]
+[ext_resource path="res://src/enemy/effects/enemyParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/sfx/scissorsFollowedByPensAndPencilShuffleandClick - Copy.wav" type="AudioStream" id=3]
+
+[node name="enemyBase" type="Area" groups=[
+"enemy",
+]]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
+
+[node name="folderOfPoints" type="Spatial" parent="."]
+
+[node name="enemyParticles" parent="." instance=ExtResource( 2 )]
+emitAtStart = false
+
+[node name="meshFolder" type="Spatial" parent="."]
+
+[node name="crossHair" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50 )
+
+[node name="destructionNoisePlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_db = 50.0

@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/enemy/robots/robotBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/robots/legs/legRobotBase.tres" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/enemies/robots/body/basicBody.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/enemies/robots/head/headRobotBase.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/enemies/robots/arms/machineGunArms.tres" type="ArrayMesh" id=5]
+[ext_resource path="res://src/enemy/enemyPoints/small/SmallPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/enemy/enemyPoints/shooter/EnemyShooter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/enemy/robots/basic/basicBot.gd" type="Script" id=8]
+
+[node name="basicBot" instance=ExtResource( 1 )]
+script = ExtResource( 8 )
+
+[node name="SmallPoint" parent="folderOfPoints" index="0" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 42, 0 )
+
+[node name="SmallPoint2" parent="folderOfPoints" index="1" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 42, 0 )
+
+[node name="head" parent="meshFolder" index="0"]
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="body" parent="meshFolder" index="1"]
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="arms" parent="meshFolder/body/shoulder" index="0"]
+mesh = ExtResource( 5 )
+material/0 = null
+
+[node name="EnemyShooter" parent="meshFolder/body/shoulder/arms" index="0" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 5.66667, -2.33333, 0 )
+
+[node name="EnemyShooter2" parent="meshFolder/body/shoulder/arms" index="1" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -5.33333, -2.33333, 0 )
+
+[node name="legs" parent="meshFolder" index="2"]
+mesh = ExtResource( 2 )
+material/0 = null

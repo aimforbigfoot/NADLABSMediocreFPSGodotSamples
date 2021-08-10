@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/enemy/enemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/robots/robotBase.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 6, 7, 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/path = NodePath("meshFolder/body/shoulder:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 1 ),
+"transitions": PoolRealArray( 0.466517, 0.148651, 1.68179, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 90, 0, 0 ), Vector3( 165, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[node name="robotBase" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0 )
+shape = SubResource( 1 )
+
+[node name="meshFolder" parent="." index="3"]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 21, 0 )
+
+[node name="head" type="MeshInstance" parent="meshFolder" index="0"]
+
+[node name="body" type="MeshInstance" parent="meshFolder" index="1"]
+
+[node name="shoulder" type="Spatial" parent="meshFolder/body" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+
+[node name="arms" type="MeshInstance" parent="meshFolder/body/shoulder" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
+
+[node name="legs" type="MeshInstance" parent="meshFolder" index="2"]
+
+[node name="shootAnims" type="AnimationPlayer" parent="." index="4"]
+anims/shoot = SubResource( 2 )
+
+[node name="shootTimer" type="Timer" parent="." index="5"]
+wait_time = 3.0
+autostart = true

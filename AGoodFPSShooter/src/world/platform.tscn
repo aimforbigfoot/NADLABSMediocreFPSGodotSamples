@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/imgs/grounds/Rock020_1K_Normal.jpg" type="Texture" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 30, 1, 30 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 60, 2, 60 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.454902, 0.454902, 0.454902, 1 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+
+[node name="platform" type="StaticBody" groups=[
+"explodeable",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
