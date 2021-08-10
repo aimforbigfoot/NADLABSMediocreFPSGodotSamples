@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shootKnifeSound.wav-a96a4892848c06ec43a54ff0692f3545.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shootNoises/shootKnifeSound.wav"
+dest_files=[ "res://.import/shootKnifeSound.wav-a96a4892848c06ec43a54ff0692f3545.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

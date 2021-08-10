@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/enemy/groundCharger/groundCharger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/groundCharger/bounceVersion/groundChargerBounce.gd" type="Script" id=2]
+[ext_resource path="res://assets/objs/enemies/groundChargerBounce/groundChargerBounce.tres" type="ArrayMesh" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "bite"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28, 1 ),
+"transitions": PoolRealArray( 0.210224, 8.87655, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.087, 1.296, 1.161 ), Vector3( 0.9, 0.651, 0.9 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.9 ),
+"transitions": PoolRealArray( 1, 0.406126, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.112, 1.092, 1 ), Vector3( 0.949, 0.955, 1 ) ]
+}
+
+[sub_resource type="SphereShape" id=2]
+
+[sub_resource type="SphereShape" id=3]
+radius = 3.0
+
+[node name="groundChargerBounce" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="meshAnimPlayer" parent="meshFolder" index="0"]
+autoplay = "idle"
+anims/bite = SubResource( 4 )
+anims/idle = SubResource( 1 )
+
+[node name="MeshInstance" parent="meshFolder" index="1"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0 )
+mesh = ExtResource( 3 )
+
+[node name="MeshInstance2" parent="meshFolder" index="2"]
+visible = false
+
+[node name="areaParticles" parent="meshFolder" index="3"]
+emitting = false
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 2 )
+
+[node name="checker" type="Area" parent="." index="3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="checker" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44903, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" parent="playerCollider" index="0"]
+disabled = true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MilitaryNoise.wav-407de104f7d8076166cc9f54940127fc.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shootNoises/MilitaryNoise.wav"
+dest_files=[ "res://.import/MilitaryNoise.wav-407de104f7d8076166cc9f54940127fc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

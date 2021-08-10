@@ -1,0 +1,102 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/groundCharger/groundCharger.gd" type="Script" id=2]
+[ext_resource path="res://assets/objs/enemies/groundCharger/groundCharger.tres" type="ArrayMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 0.743976, 1, 0.0559142, 0.242181 )
+
+[sub_resource type="SphereMesh" id=2]
+material = SubResource( 1 )
+radius = 10.0
+height = 20.0
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.565891, 1 )
+colors = PoolColorArray( 0.198242, 1, 0, 1, 1, 0.93457, 0, 1, 0.268555, 1, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.488636 ), 0.0, 0.0, 0, 0, Vector2( 0.125, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.289474, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+radial_accel = -100.0
+tangential_accel = 18.6
+scale = 0.1
+scale_random = 1.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=8]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="CubeMesh" id=9]
+material = SubResource( 8 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "idleColor"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance2:mesh:material:albedo_color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 2.8, 4.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 1, 0.223529, 0.368627 ), Color( 0.992157, 1, 0, 0.2 ), Color( 0.0941176, 1, 0.745098, 0.168627 ), Color( 0, 0.513726, 0.0941176, 0.168627 ) ]
+}
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 1, 1.34378, 1 )
+
+[sub_resource type="SphereShape" id=12]
+radius = 9.94758
+
+[node name="groundCharger" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" parent="meshFolder" index="1"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.359438, 0 )
+mesh = ExtResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="meshFolder" index="2" groups=[
+"no",
+]]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="areaParticles" type="Particles" parent="meshFolder" index="3"]
+amount = 64
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="meshFolder" index="4"]
+autoplay = "idleColor"
+anims/idleColor = SubResource( 10 )
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19427, 0 )
+shape = SubResource( 11 )
+
+[node name="dieParticles" parent="." index="6"]
+visibility_aabb = AABB( -56, -33, -78, 112, 66, 156 )
+
+[node name="playerCollider" type="Area" parent="." index="7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="playerCollider" index="0"]
+shape = SubResource( 12 )

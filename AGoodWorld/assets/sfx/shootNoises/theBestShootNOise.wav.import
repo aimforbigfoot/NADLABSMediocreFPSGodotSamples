@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/theBestShootNOise.wav-b68a86f1f6ce6dac7959e453b8a0f105.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shootNoises/theBestShootNOise.wav"
+dest_files=[ "res://.import/theBestShootNOise.wav-b68a86f1f6ce6dac7959e453b8a0f105.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

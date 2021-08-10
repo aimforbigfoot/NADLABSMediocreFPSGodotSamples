@@ -1,0 +1,165 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/hider/hider.gd" type="Script" id=2]
+[ext_resource path="res://assets/objs/enemies/hider/hiderBody.tres" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/objs/enemies/hider/hideHands.tres" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/sfx/monsterNoises/monsterNoiseDefault/monsterNoise5.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1.095, 0.911, 1.191 ), Vector3( 0.957, 1.035, 0.982 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("otherarm:translation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0143636, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.835489, 0.880556, 1.57735 ), Vector3( -0.835489, 0.842277, 1.72168 ), Vector3( -0.835489, 1.28242, 1.64086 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("arm:translation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.76862, 0.880556, 1.3431 ), Vector3( 0.76862, 0.733676, 1.5213 ), Vector3( 0.559581, 1.06681, 1.28172 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("explodeHint:mesh:material:albedo_color")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.00392157 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.34227, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 60.0
+scale_curve = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.00392157 )
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=8]
+material = SubResource( 7 )
+radius = 20.0
+height = 40.0
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 2, 1.53048, 2.1989 )
+
+[sub_resource type="SphereShape" id=10]
+radius = 19.5955
+
+[node name="hider" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="meshAnimPlayer" parent="meshFolder" index="0"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+
+[node name="arm" type="MeshInstance" parent="meshFolder" index="1"]
+transform = Transform( -0.210578, 0.0159357, 0.667385, 0.456702, 0.513852, 0.131832, -0.486909, 0.475081, -0.164977, 0.76862, 0.880556, 1.3431 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="explosionParticles" type="Particles" parent="meshFolder" index="2"]
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.87
+visibility_aabb = AABB( -120, -75, -63, 240, 150, 126 )
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
+
+[node name="explodeHint" type="MeshInstance" parent="meshFolder" index="3" groups=[
+"no",
+]]
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="OmniLight" type="SpotLight" parent="meshFolder" index="4"]
+transform = Transform( 1, 0, 0, 0, -0.991236, 0.132101, 0, -0.132101, -0.991236, 0, 3.46275, 2.76995 )
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_negative = true
+spot_range = 15.097
+spot_angle = 62.2612
+
+[node name="otherarm" type="MeshInstance" parent="meshFolder" index="5"]
+transform = Transform( 0.0764981, 0.0151928, 0.695641, 0.386556, 0.580971, -0.055197, -0.578552, 0.390181, 0.0551005, -0.835489, 0.892192, 1.57591 )
+mesh = ExtResource( 4 )
+material/0 = null
+
+[node name="MeshInstance" parent="meshFolder" index="6"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.00852275, 0 )
+mesh = ExtResource( 3 )
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0123758, 1.78049, 0.369544 )
+shape = SubResource( 9 )
+
+[node name="RayCast" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="dieNoisePlayer" parent="noisePlayerFolder" index="1"]
+stream = ExtResource( 5 )
+unit_db = 80.0
+pitch_scale = 2.0
+
+[node name="exploisonChecker" type="Area" parent="." index="7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="exploisonChecker" index="0"]
+shape = SubResource( 10 )

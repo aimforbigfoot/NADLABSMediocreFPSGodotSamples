@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/nightHell/nightHell.gd" type="Script" id=2]
+[ext_resource path="res://assets/sfx/interactionNoises/Jump 11.wav" type="AudioStream" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0.180392, 0.180392, 1 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 9.281, 9.891, 1 )
+spread = 123.49
+gravity = Vector3( 0, 0, 0 )
+initial_velocity_random = 0.05
+scale_curve = SubResource( 3 )
+
+[sub_resource type="CubeMesh" id=5]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="SphereShape" id=6]
+radius = 1.41197
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 8, 3.22549, 8 )
+
+[node name="nightHell" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" parent="meshFolder" index="1"]
+material_override = SubResource( 1 )
+
+[node name="oneSecondTimer" parent="timerFolder" index="1"]
+autostart = false
+
+[node name="afterLandedTimer" type="Timer" parent="timerFolder" index="3"]
+wait_time = 2.0
+
+[node name="quickAfterLand" type="Timer" parent="timerFolder" index="5"]
+wait_time = 2.0
+
+[node name="jumpNoisePlayer" type="AudioStreamPlayer3D" parent="noisePlayerFolder" index="3"]
+stream = ExtResource( 3 )
+unit_db = 10.0
+pitch_scale = 0.67
+
+[node name="checkIfHitFloor" type="Area" parent="." index="6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="jumpParticles" type="Particles" parent="checkIfHitFloor" index="0"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.171775, 0 )
+emitting = false
+amount = 32
+lifetime = 4.0
+one_shot = true
+speed_scale = 4.0
+explosiveness = 0.87
+randomness = 1.0
+fract_delta = false
+visibility_aabb = AABB( -54, -31, -17, 108, 62, 34 )
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="checkIfHitFloor" index="1"]
+shape = SubResource( 6 )
+
+[node name="playerChecker" type="Area" parent="." index="8"]
+
+[node name="CollisionShape" type="CollisionShape" parent="playerChecker" index="0"]
+shape = SubResource( 7 )

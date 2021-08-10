@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dooh.wav-c5bcab8028784a2ae64645a4326c86e4.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shootNoises/dooh.wav"
+dest_files=[ "res://.import/dooh.wav-c5bcab8028784a2ae64645a4326c86e4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Explosion 21.wav-370b2fe879f1674c5bd4211105866124.sample"
+
+[deps]
+
+source_file="res://assets/sfx/explison40/Explosion 21.wav"
+dest_files=[ "res://.import/Explosion 21.wav-370b2fe879f1674c5bd4211105866124.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

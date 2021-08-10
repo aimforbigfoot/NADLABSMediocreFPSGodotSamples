@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Jump 11.wav-ef3674683a1f76f73d1cbedbed761678.sample"
+
+[deps]
+
+source_file="res://assets/sfx/interactionNoises/Jump 11.wav"
+dest_files=[ "res://.import/Jump 11.wav-ef3674683a1f76f73d1cbedbed761678.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

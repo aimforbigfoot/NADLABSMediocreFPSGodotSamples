@@ -1,0 +1,147 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/telePorter/telePorter.gd" type="Script" id=2]
+[ext_resource path="res://assets/objs/enemies/teleporter/teleporter.tres" type="ArrayMesh" id=3]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.203947, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.651316, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+spread = 65.57
+gravity = Vector3( -100, 0, 0 )
+initial_velocity = 35.71
+scale_curve = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0.345098, 1, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../hidingParticles:emitting")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../meshFolder/MeshInstance:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.1, 0.1, 0.1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "leavingGood"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../hidingParticles:emitting")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../meshFolder/MeshInstance:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.263158, 0.9875 ), 0.0, 0.0, 0, 0, Vector2( 0.513158, 0 ), 0.0162948, 0.0162948, 0, 0, Vector2( 0.743421, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_align_y = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity_random = 1.0
+radial_accel = -20.93
+tangential_accel = 16.28
+scale = 0.25
+scale_random = 1.0
+scale_curve = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.113725, 0, 1, 1 )
+emission_enabled = true
+emission = Color( 0.121569, 0, 1, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=12]
+material = SubResource( 11 )
+radial_segments = 6
+rings = 6
+is_hemisphere = true
+
+[sub_resource type="SphereShape" id=13]
+radius = 5.0
+
+[node name="telePorter" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MeshInstance" parent="meshFolder" index="1"]
+transform = Transform( 0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, 1, 0 )
+mesh = ExtResource( 3 )
+
+[node name="hidingParticles" type="Particles" parent="." index="2"]
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
+emitting = false
+amount = 64
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.82
+randomness = 1.0
+visibility_aabb = AABB( -192, -114, -164, 384, 228, 328 )
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="teleAnimator" type="AnimationPlayer" parent="timerFolder" index="1"]
+anims/arriving = SubResource( 6 )
+anims/leavingGood = SubResource( 7 )
+
+[node name="idlePart" type="Particles" parent="." index="8"]
+amount = 32
+process_material = SubResource( 10 )
+draw_pass_1 = SubResource( 12 )
+
+[node name="playerColidder" type="Area" parent="." index="9"]
+
+[node name="CollisionShape" type="CollisionShape" parent="playerColidder" index="0"]
+shape = SubResource( 13 )

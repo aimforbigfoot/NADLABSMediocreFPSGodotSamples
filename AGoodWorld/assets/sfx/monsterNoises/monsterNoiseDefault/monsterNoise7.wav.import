@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/monsterNoise7.wav-e1967af5ec6d5207675e2eb303fdd401.sample"
+
+[deps]
+
+source_file="res://assets/sfx/monsterNoises/monsterNoiseDefault/monsterNoise7.wav"
+dest_files=[ "res://.import/monsterNoise7.wav-e1967af5ec6d5207675e2eb303fdd401.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

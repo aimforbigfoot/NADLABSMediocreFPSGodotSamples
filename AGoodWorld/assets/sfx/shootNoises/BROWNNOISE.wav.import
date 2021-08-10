@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BROWNNOISE.wav-f64b7bdfcd3f5168420492ad87f1219d.sample"
+
+[deps]
+
+source_file="res://assets/sfx/shootNoises/BROWNNOISE.wav"
+dest_files=[ "res://.import/BROWNNOISE.wav-f64b7bdfcd3f5168420492ad87f1219d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

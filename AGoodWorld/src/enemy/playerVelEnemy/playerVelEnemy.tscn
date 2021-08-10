@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/enemy/baseEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/playerVelEnemy/playerVelEnemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/objs/enemies/playerVelEnemy/playerVelEnemy.tres" type="ArrayMesh" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 0.406126, 1 ),
+"update": 0,
+"values": [ Vector3( 2, 2, 2 ), Vector3( 1.926, 1.894, 2.261 ), Vector3( 2.4, 2.516, 2 ) ]
+}
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+scale_curve = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.775879, 0.754847, 0.081831, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 3.65917, 2.14288, 1.36453 )
+
+[node name="playerVelEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="meshAnimPlayer" parent="meshFolder" index="0"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )
+
+[node name="MeshInstance" parent="meshFolder" index="1"]
+transform = Transform( 2.36427, 0, 0, 0, 2.46907, 0, 0, 0, 2.02093, 0, 3, 0 )
+mesh = ExtResource( 3 )
+
+[node name="Particles" type="Particles" parent="meshFolder" index="2"]
+amount = 24
+visibility_aabb = AABB( -14, -12, -13, 28, 24, 26 )
+local_coords = false
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
+
+[node name="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86071, 0 )
+shape = SubResource( 7 )

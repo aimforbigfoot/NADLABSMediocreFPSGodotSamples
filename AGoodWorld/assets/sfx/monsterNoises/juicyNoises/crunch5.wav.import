@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crunch5.wav-93541fdd1922a5306614cda570b76b13.sample"
+
+[deps]
+
+source_file="res://assets/sfx/monsterNoises/juicyNoises/crunch5.wav"
+dest_files=[ "res://.import/crunch5.wav-93541fdd1922a5306614cda570b76b13.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
